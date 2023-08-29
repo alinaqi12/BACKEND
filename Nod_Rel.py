@@ -1,9 +1,6 @@
 from neo4j import GraphDatabase
 from initialGraph import ini_graph
-    # uri = "bolt://localhost:7687"  # Replace with your Neo4j URI
-    # username = "alinaqi"      # Replace with your Neo4j username
-    # password = "12345678"      # Replace with your Neo4j password
-    # database = 'testingdb'
+
 
 def get_nodes_and_edges(Data):
     URI = Data['URI']
@@ -24,4 +21,5 @@ def getdata(Request):
         nodes_and_edges=get_nodes_and_edges(Request)
     else:
         nodes_and_edges = ini_graph(Request)
+        # print(nodes_and_edges)
     return nodes_and_edges

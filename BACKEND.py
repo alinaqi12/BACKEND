@@ -6,6 +6,8 @@ from export import export_data
 from runtime_data import get_graph_data_by_query
 from Get_Databases import GET_DATABASE
 from flask_cors import CORS
+import subprocess
+import platform
 from Nod_Rel import getdata
 from CSV import upload_csv
 from Json import import_json_data
@@ -13,6 +15,19 @@ from Json import import_json_data
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) 
+
+def start_service(service_name):
+    system = platform.system()
+    
+    if system == "Windows":
+        # For Windows, use the 'sc' command to start a service.
+        try:
+            subprocess.run(["sc", "start", service_name], check=True)
+            print(f"Service '{service_name}' started successfully on Windows.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to start service '{service_name}' on Windows. Error: {e}")
+    
+start_service('neo4j')
 
 @app.route('/createrelation', methods=['POST'])
 def create_relation():

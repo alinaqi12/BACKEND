@@ -1,5 +1,6 @@
 from flask import  request, jsonify
 from neo4j import GraphDatabase
+import json
 
 def ini_graph(data):
     try:
@@ -54,10 +55,26 @@ def format_to_edge_node_dict(result):
                 "target": edge["target"],
                 "type": edge["type"]
             })
-
+        
+        # formatted_edges=SetLists(formatted_edges)
+        #print("FORMATED: ",formatted_edges)
+        # print("--------------")
         formatted_result = {
-            "nodes": formatted_nodes,
-            "edges": formatted_edges
+            "nodes": remove_duplicate_dicts(formatted_nodes),
+            "edges": remove_duplicate_dicts(formatted_edges)
         }
-
         return formatted_result
+
+def remove_duplicate_dicts(data):
+    unique_data = []
+    seen_data = set()
+
+    for item in data:
+        item_json = json.dumps(item, sort_keys=True)
+
+        if item_json not in seen_data:
+            seen_data.add(item_json)
+            unique_data.append(item)
+
+    return unique_data
+
