@@ -11,11 +11,10 @@ def upload_csv(request):
         json_data = request['file_data']
 
         label=request['label_name']
-        # print(json_data,'/////////////')
-        # print(label,'/////////////')
         if not json_data:
             return jsonify({'error': 'No JSON data provided'}), 400
 
+        
         csv_filename = "uploaded_data.csv"
         # Convert JSON to CSV format and save to a file
         with open(csv_filename, 'w', newline='') as csv_file:

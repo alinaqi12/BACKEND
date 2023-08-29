@@ -38,7 +38,7 @@ def import_data(data, node_name, unique_id_field):
                             params[key] = value
                 session.run(cypher_query, params)
 
-def import_json_data(request):
+def import_jformat_data(request):
     try:
         data = request.json
         node_name = request.args.get('node_name')
