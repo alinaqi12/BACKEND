@@ -41,7 +41,6 @@ def getperson():
 def datasource():
     if request.method=='POST':
         data=request.get_json()
-        print(data)
         response=add_data_source(data['source_url'],data['source_database'],data['source_user'],data['source_password'],data['neo4j_url'],data['neo4j_database'],data['neo4j_user'],data['neo4j_password'],data['keep_relations'])
         return jsonify(response)
 
@@ -116,8 +115,6 @@ def filternodes():
         response = get_nodes_and_edges()  # Call the function
         return response
 
-#if __name__ == '__main__':
-#app.run(host='192.168.137.229',debug=True, port=34464)
 
 if __name__ == '__main__':
     app.run(host='192.168.137.1', port=34464, debug=True)

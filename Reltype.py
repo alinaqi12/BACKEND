@@ -4,8 +4,8 @@ from neo4j import GraphDatabase
 
 
 def get_relationships(request):
+    
     input_data = request.json
-
     uri = input_data.get("URI")
     username = input_data.get("username")
     password = input_data.get("password")
