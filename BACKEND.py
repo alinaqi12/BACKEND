@@ -1,4 +1,4 @@
-from flask import Flask, jsonify,Response, request
+from flask import Flask, jsonify,request
 from SQL_to_NEO4j import add_data_source
 from Get_Nodes import Get_Nodes_Data
 from create_relations import get_values
@@ -16,6 +16,7 @@ from CreateD_BDeleteDB  import manage_database
 from Filters import get_nodes_and_edges
 
 
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) 
 
@@ -26,7 +27,7 @@ def create_relation():
         data = request.get_json()
         #print(data)
         response=get_values(data)
-        print("RESPONSE::::",response)
+        # print("RESPONSE::::",response)
         return response
 
 @app.route('/getrelations', methods=['GET'])
@@ -114,5 +115,4 @@ def filternodes():
 
 #the main function
 if __name__ == '__main__':
-    app.run(host="192.168.137.3",debug=True, port=34464)
-
+    app.run(host="192.168.18.82",debug=True, port=34464)

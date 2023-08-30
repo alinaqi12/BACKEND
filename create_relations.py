@@ -53,13 +53,14 @@ def relation(driver,targets,database,single_node=0,add_del='add',relations='mult
                 ################## deleting all relations between all specific nodes.. means deleting all relations on all nodes but nodes will be chosen on a condition like same CNIC or other identifier 
                 if relations=='multiple':
                     query=f"MATCH (source:{a['source']}) "+f" WHERE source.{a['Source_property']} IS NOT NULL "+f"MATCH (target:{a['target']}) "+f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "+f" match (source)-[r]->(target) "+" delete r RETURN source;"                    
+                    print(query)
             with driver.session(database=database) as session:
                 session.run(query)
 
 def get_values(data):
     URI = data['URI']
     AUTH = (data['username'], data['password'])
-    #database='testingdb'
+    
     driver= GraphDatabase.driver(URI, auth=AUTH)  
 
 

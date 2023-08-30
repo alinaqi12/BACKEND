@@ -1,4 +1,4 @@
-from flask import  request, jsonify
+from flask import jsonify
 from neo4j import GraphDatabase
 import json
 
