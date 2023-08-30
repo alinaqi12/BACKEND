@@ -21,32 +21,32 @@ def ini_graph(data):
             properties = a['property']
             propertyvalue = str(a['propertyvalue'])
             if table=="" and properties==False and propertyvalue=="" and database!="":
-                query+= "OPTIONAL MATCH (n)-[r]->(c) RETURN c "+f"limit {limit} "
+                query+= " OPTIONAL MATCH (n)-[r]->(c) RETURN c "+f"limit {limit} "
                 print("NO 1 is executing")
         
             elif table!="" and properties!=False and propertyvalue!="" and depth!="":
-                query+= "OPTIONAL MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+"]-"
-                query+=f"(relatedNode) WITH {node} COLLECT(DISTINCT relatedNode) AS nodes{i}, COLLECT(r) AS allRelationships{i}" 
+                query+= " OPTIONAL MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+"]-"
+                query+=f"(relatedNode) WITH {node} COLLECT(DISTINCT relatedNode) AS nodes{i}, COLLECT(r) AS allRelationships{i} " 
                 print("NO 2 is executing")
             elif table!="" and properties==False and propertyvalue=="":
-                query+= "OPTIONAL MATCH path=(n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
+                query+= " OPTIONAL MATCH path=(n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
                 query+=f"(relatedNode) WITH {node} COLLECT(DISTINCT relatedNode) AS nodes{i}, COLLECT(r) AS allRelationships{i}  "
                 print("NO 3 is executing")
             else:
                 return {'error': "No Query Executed"} 
             if i!=0:
                 nodes+=f"+nodes{i}"
-                allRelationships+=f"+allRelationships{i}"
+                allRelationships+=f"+allRelationships{i} "
             elif i==0:
                 nodes+=f"nodes{i}"
-                allRelationships+=f"allRelationships{i}"
+                allRelationships+=f"allRelationships{i} "
             node+=f" nodes{i},allRelationships{i}, "
 
         mid_query=f'''WITH {nodes} AS nodes, {allRelationships} AS allRelationships '''
         fixed_query='''WITH REDUCE(edges = [], rels IN allRelationships |    edges + [rel in rels |       { source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }     ]) AS edges, nodes RETURN { edges: edges, nodes: nodes } AS graphData;'''    
         
         finalquery=str(query+mid_query+fixed_query)
-        print(finalquery)
+        # print(finalquery)
         with driver.session(database=database) as session:
             result = session.run(finalquery).single()
         driver.close()
