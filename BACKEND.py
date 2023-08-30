@@ -8,8 +8,14 @@ from Get_Databases import GET_DATABASE
 from flask_cors import CORS
 from Nod_Rel import getdata
 from CSV import upload_csv
+<<<<<<< HEAD:BACKEND_FATIMA.py
+from FUNC_Jformat import import_jformat_data
+from Filters import get_nodes_and_edges
+import json
+=======
 from Json import import_json_data
 
+>>>>>>> 919140f63bcec0d87874de5e78f4b672603709cf:BACKEND.py
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) 
@@ -75,6 +81,8 @@ def csv():
 def json():
     response=import_jformat_data(request)
     return response
+<<<<<<< HEAD:BACKEND_FATIMA.py
+=======
     
 @app.route('/shortestpath', methods=['POST'])
 def get_shortestpath():
@@ -87,7 +95,20 @@ def existing_rels():
     if request.method=="POST":
         reponse=get_relationships(request)
         return jsonify(reponse)
+>>>>>>> 919140f63bcec0d87874de5e78f4b672603709cf:BACKEND.py
 
+@app.route('/get_nodes_and_edges', methods=['POST'])
+def filternodes():
+    if request.method == 'POST':
+        response = get_nodes_and_edges()  # Call the function
+        return response
+
+#if __name__ == '__main__':
+#app.run(host='192.168.137.229',debug=True, port=34464)
 
 if __name__ == '__main__':
+<<<<<<< HEAD:BACKEND_FATIMA.py
+    app.run(host='localhost', port=9090, debug=True)
+=======
     app.run(host="192.168.137.35",debug=True, port=34464)
+>>>>>>> 919140f63bcec0d87874de5e78f4b672603709cf:BACKEND.py
