@@ -13,7 +13,7 @@ def ini_graph(data):
         query=''
         nodes=''
         allRelationships=''
-        print(type(Data))
+        # print(type(Data))
         node=''
     
         for i, a in enumerate(Data):
@@ -21,17 +21,17 @@ def ini_graph(data):
             properties = a['property']
             propertyvalue = str(a['propertyvalue'])
             if table=="" and properties==False and propertyvalue=="" and database!="":
-                query+= " OPTIONAL MATCH (n)-[r]->(c) RETURN c "+f"limit {limit} "
-                print("NO 1 is executing")
+                query+= " OPTIONAL MATCH (n)-[r]-(c) RETURN c "+f"limit {limit} "
+                # print("NO 1 is executing")
         
             elif table!="" and properties!=False and propertyvalue!="" and depth!="":
                 query+= " OPTIONAL MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+"]-"
                 query+=f"(relatedNode) WITH {node} COLLECT(DISTINCT relatedNode) AS nodes{i}, COLLECT(r) AS allRelationships{i} " 
-                print("NO 2 is executing")
+                # print("NO 2 is executing")
             elif table!="" and properties==False and propertyvalue=="":
                 query+= " OPTIONAL MATCH path=(n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
                 query+=f"(relatedNode) WITH {node} COLLECT(DISTINCT relatedNode) AS nodes{i}, COLLECT(r) AS allRelationships{i}  "
-                print("NO 3 is executing")
+                # print("NO 3 is executing")
             else:
                 return {'error': "No Query Executed"} 
             if i!=0:
