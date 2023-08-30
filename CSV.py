@@ -3,6 +3,7 @@ import os
 import csv
 from neo4j import GraphDatabase
 import csv
+from Old_rels import get_node_name
 
 
 def upload_csv(request):
@@ -23,8 +24,8 @@ def upload_csv(request):
             csv_writer.writerows(json_data)
         if label=='':
             label = "Node"  # Default label is 'Node'
-        import_csv_to_neo4j(csv_filename, label)
-        return jsonify({'message': 'CSV data converted and saved successfully in neo4j'}), 200
+        response2 = import_csv_to_neo4j(csv_filename, label)
+        return jsonify({'message': 'CSV data converted and saved successfully in neo4j'},response2), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -69,6 +70,10 @@ def import_csv_to_neo4j(csv_path, label):
                 # Import remaining rows
                 if rows:
                     session.run(query, batch=rows)
+
+        # old relationship making
+        return get_node_name(uri,username,password,database,label)
+
     except Exception as e:
         print('Error is ', e)    
     driver.close()
