@@ -9,6 +9,7 @@ from flask_cors import CORS
 from Nod_Rel import getdata
 from CSV import upload_csv
 from FUNC_Jformat import import_jformat_data
+from Filters import get_nodes_and_edges
 import json
 
 app = Flask(__name__)
@@ -105,8 +106,15 @@ def csv():
 def json():
     response=import_jformat_data(request)
     return response
-    
 
+@app.route('/get_nodes_and_edges', methods=['POST'])
+def filternodes():
+    if request.method == 'POST':
+        response = get_nodes_and_edges()  # Call the function
+        return response
+
+#if __name__ == '__main__':
+#app.run(host='192.168.137.229',debug=True, port=34464)
 
 if __name__ == '__main__':
-    app.run(host='192.168.137.3',debug=True, port=34464)
+    app.run(host='localhost', port=9090, debug=True)
