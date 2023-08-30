@@ -45,7 +45,9 @@ def import_csv_to_neo4j(csv_path, label):
             column_names = next(reader)  # Read the header line
 
             # Replace spaces with underscores in header names
-            column_names = [column.replace(" ", "_") for column in column_names]
+            All_char = ['!',"@","#","$","%","^","&","*","(",")","_","-","=","+","[","{","]","}",";",":","'",'"',",","<",".",">","/","?","\\","|"] 
+            for i in range(len(All_char)):
+                column_names = [column.replace(All_char[i], "_") for column in column_names]
 
             with driver.session(database=database) as session:
                 query = (
