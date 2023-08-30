@@ -23,6 +23,4 @@ def getdata(Request):
         nodes_and_edges = ini_graph(Request)
         # print(nodes_and_edges)
     
-    image_data = open('images/outlook.png', 'rb').read()
-
-    return nodes_and_edges,image_data
+    return nodes_and_edges
