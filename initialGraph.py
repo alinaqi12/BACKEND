@@ -16,7 +16,7 @@ def ini_graph(data):
             query = "MATCH (n)-[r]->(c) RETURN c "+f"limit {limit}"
         elif table!="" and properties!=False and propertyvalue!="" and depth!="":
             query = "MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-[r*0.."+f"{depth}"+"]-(relatedNode) WITH COLLECT(DISTINCT relatedNode) AS nodes, COLLECT(r) AS allRelationships WITH REDUCE(edges = [], rels IN allRelationships |    edges + [rel in rels |       { source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }     ]) AS edges, nodes RETURN { edges: edges, nodes: nodes } AS graphData;" 
-        elif properties==False and propertyvalue=="":
+        elif table!="" and properties==False and propertyvalue=="":
             query = "MATCH path=(n:"+ f"{table}" +")-[r*0.."+f"{depth}"+"]-(relatedNode) WITH COLLECT(DISTINCT relatedNode) AS nodes, COLLECT(r) AS allRelationships WITH REDUCE(edges = [], rels IN allRelationships |    edges + [rel in rels |       { source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }     ]) AS edges, nodes RETURN { edges: edges, nodes: nodes } AS graphData;" 
         else:
             return {'error': "No Query Executed"} 
@@ -54,11 +54,8 @@ def format_to_edge_node_dict(result):
                 "source": edge["source"],
                 "target": edge["target"],
                 "type": edge["type"]
-            })
-        
-        # formatted_edges=SetLists(formatted_edges)
-        #print("FORMATED: ",formatted_edges)
-        # print("--------------")
+            })        
+
         formatted_result = {
             "nodes": remove_duplicate_dicts(formatted_nodes),
             "edges": remove_duplicate_dicts(formatted_edges)

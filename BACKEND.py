@@ -8,7 +8,11 @@ from Get_Databases import GET_DATABASE
 from flask_cors import CORS
 from Nod_Rel import getdata
 from CSV import upload_csv
-from Json import import_json_data
+from FUNC_Jformat import import_jformat_data
+from Reltype import get_relationships
+from ShortestPath import shortest_path
+from existing_node import get_node_labels
+from CreateD_BDeleteDB  import manage_database
 
 
 app = Flask(__name__)
@@ -64,6 +68,7 @@ def getdatabases():
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
+        print("RESPONSE IS __________",response)
         return jsonify(response)
     
 @app.route('/upload_csv_neo', methods=['POST'])
@@ -75,7 +80,13 @@ def csv():
 def json():
     response=import_jformat_data(request)
     return response
+
+@app.route('/get_exisiting_nodes', methods=['POST'])
+def existingnode():
+    response=get_node_labels(request)
+    return response
     
+
 @app.route('/shortestpath', methods=['POST'])
 def get_shortestpath():
     if request.method=="POST":
@@ -88,6 +99,12 @@ def existing_rels():
         reponse=get_relationships(request)
         return jsonify(reponse)
 
+@app.route('/managedatabase', methods=['POST'])
+def managedb():
+    if request.method=="POST":
+        reponse=manage_database(request)
+        return jsonify(reponse)
+
 
 if __name__ == '__main__':
-    app.run(host="192.168.137.35",debug=True, port=34464)
+    app.run(host="192.168.137.3",debug=True, port=34464)

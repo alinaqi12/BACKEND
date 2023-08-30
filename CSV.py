@@ -29,7 +29,7 @@ def upload_csv(request):
         return jsonify({'error': str(e)}), 500
 
 
-BATCH_SIZE = 100000  # Adjust batch size as needed
+BATCH_SIZE = 100000000000000000000000  # Adjust batch size as needed
 
 def import_csv_to_neo4j(csv_path, label):
     uri = "bolt://localhost:7687"  
@@ -38,36 +38,37 @@ def import_csv_to_neo4j(csv_path, label):
     database = 'testingdb'
 
     driver = GraphDatabase.driver(uri, auth=(username, password))
+    try:
+        with open(csv_path, newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            column_names = next(reader)  # Read the header line
 
-    with open(csv_path, newline='') as csvfile:
-        reader = csv.reader(csvfile)
-        column_names = next(reader)  # Read the header line
+            # Replace spaces with underscores in header names
+            column_names = [column.replace(" ", "_") for column in column_names]
 
-        # Replace spaces with underscores in header names
-        column_names = [column.replace(" ", "_") for column in column_names]
+            with driver.session(database=database) as session:
+                query = (
+                    f"UNWIND $batch AS row\n"
+                    f"MERGE (p:{label} {{"
+                )
 
-        with driver.session(database=database) as session:
-            query = (
-                f"UNWIND $batch AS row\n"
-                f"MERGE (p:{label} {{"
-            )
+                for column in column_names:
+                    query += f"  {column}: row['{column}'],"
+                
+                query = query[:-1]  # Remove the trailing comma
+                query += "});"
+                # print(query)
+                rows = []
+                for row in reader:
+                    row_dict = dict(zip(column_names, row))
+                    rows.append(row_dict)
+                    if len(rows) == BATCH_SIZE:
+                        session.run(query, batch=rows)
+                        rows = []
 
-            for column in column_names:
-                query += f"  {column}: row['{column}'],"
-            
-            query = query[:-1]  # Remove the trailing comma
-            query += "});"
-            # print(query)
-            rows = []
-            for row in reader:
-                row_dict = dict(zip(column_names, row))
-                rows.append(row_dict)
-                if len(rows) == BATCH_SIZE:
+                # Import remaining rows
+                if rows:
                     session.run(query, batch=rows)
-                    rows = []
-
-            # Import remaining rows
-            if rows:
-                session.run(query, batch=rows)
-
+    except Exception as e:
+        print('Error is ', e)    
     driver.close()

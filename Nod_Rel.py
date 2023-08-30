@@ -17,7 +17,7 @@ def get_nodes_and_edges(Data):
     
 def getdata(Request):
     if 'node_id' in Request:
-        print(Request['node_id'])
+        print(Request)
         nodes_and_edges=get_nodes_and_edges(Request)
     else:
         nodes_and_edges = ini_graph(Request)
