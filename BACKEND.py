@@ -68,7 +68,7 @@ def getdatabases():
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
-        print("RESPONSE IS __________",response)
+        # print("RESPONSE IS __________",response)
         return jsonify(response)
 
 @app.route('/upload_csv_neo', methods=['POST'])
