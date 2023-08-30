@@ -8,8 +8,8 @@ from Get_Databases import GET_DATABASE
 from flask_cors import CORS
 from Nod_Rel import getdata
 from CSV import upload_csv
-from FUNC_Jformat import import_jformat_data
-import json
+from Json import import_json_data
+
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) 
@@ -62,11 +62,10 @@ def getdatabases():
     
 @app.route('/getdata', methods=['POST'])
 def getgraph():
-    if request.method == 'POST':
-        nodes_and_edges= getdata(request.get_json())
-        # print(type(nodes_and_edges))
-        return jsonify(nodes_and_edges)   
-
+    if request.method=='POST':
+        response=getdata(request.get_json())
+        return jsonify(response)
+    
 @app.route('/upload_csv_neo', methods=['POST'])
 def csv():
     response=upload_csv(request)
@@ -77,7 +76,18 @@ def json():
     response=import_jformat_data(request)
     return response
     
+@app.route('/shortestpath', methods=['POST'])
+def get_shortestpath():
+    if request.method=="POST":
+        reponse=shortest_path(request)
+        return jsonify(reponse)
+
+@app.route('/get_available_relationships', methods=['POST'])
+def existing_rels():
+    if request.method=="POST":
+        reponse=get_relationships(request)
+        return jsonify(reponse)
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.137.3',debug=True, port=34464)
+    app.run(host="192.168.137.35",debug=True, port=34464)
