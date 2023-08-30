@@ -14,7 +14,6 @@ from ShortestPath import shortest_path
 from existing_node import get_node_labels
 from CreateD_BDeleteDB  import manage_database
 from Filters import get_nodes_and_edges
-import json
 
 
 app = Flask(__name__)
@@ -71,7 +70,7 @@ def getgraph():
         response=getdata(request.get_json())
         print("RESPONSE IS __________",response)
         return jsonify(response)
-    
+
 @app.route('/upload_csv_neo', methods=['POST'])
 def csv():
     response=upload_csv(request)
@@ -82,7 +81,7 @@ def json():
     response=import_jformat_data(request)
     return response
 
-@app.route('/get_exisiting_nodes', methods=['POST'])
+@app.route('/get_existing_nodes', methods=['POST'])
 def existingnode():
     response=get_node_labels(request)
     return response
@@ -93,7 +92,7 @@ def get_shortestpath():
         reponse=shortest_path(request)
         return jsonify(reponse)
 
-@app.route('/get_available_relationships', methods=['POST'])
+@app.route('/get_existing_relationships', methods=['POST'])
 def existing_rels():
     if request.method=="POST":
         reponse=get_relationships(request)
@@ -106,15 +105,12 @@ def managedb():
         return jsonify(reponse)
 
 
-if __name__ == '__main__':
-    app.run(host="192.168.137.3",debug=True, port=34464)
-
 @app.route('/get_nodes_and_edges', methods=['POST'])
 def filternodes():
     if request.method == 'POST':
         response = get_nodes_and_edges()  # Call the function
         return response
 
-
 if __name__ == '__main__':
-    app.run(host='192.168.137.1', port=34464, debug=True)
+    app.run(host="192.168.137.3",debug=True, port=34464)
+

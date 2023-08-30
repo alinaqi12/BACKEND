@@ -7,21 +7,48 @@ def ini_graph(data):
         URI = data['URI']
         driver = GraphDatabase.driver(URI, auth=(data['username'], data['password']))
         database = data['database']
-        table = data['table']
-        properties = data['property']
-        propertyvalue = str(data['propertyvalue'])
+        Data=list(data['Data'])
         depth = data['depth']
         limit = data['limit']
-        if table=="" and properties==False and propertyvalue=="" and database!="":
-            query = "MATCH (n)-[r]->(c) RETURN c "+f"limit {limit}"
-        elif table!="" and properties!=False and propertyvalue!="" and depth!="":
-            query = "MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-[r*0.."+f"{depth}"+"]-(relatedNode) WITH COLLECT(DISTINCT relatedNode) AS nodes, COLLECT(r) AS allRelationships WITH REDUCE(edges = [], rels IN allRelationships |    edges + [rel in rels |       { source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }     ]) AS edges, nodes RETURN { edges: edges, nodes: nodes } AS graphData;" 
-        elif table!="" and properties==False and propertyvalue=="":
-            query = "MATCH path=(n:"+ f"{table}" +")-[r*0.."+f"{depth}"+"]-(relatedNode) WITH COLLECT(DISTINCT relatedNode) AS nodes, COLLECT(r) AS allRelationships WITH REDUCE(edges = [], rels IN allRelationships |    edges + [rel in rels |       { source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }     ]) AS edges, nodes RETURN { edges: edges, nodes: nodes } AS graphData;" 
-        else:
-            return {'error': "No Query Executed"} 
+        query=''
+        nodes=''
+        allRelationships=''
+        print(type(Data))
+        node=''
+    
+        for i, a in enumerate(Data):
+            table = a['table']
+            properties = a['property']
+            propertyvalue = str(a['propertyvalue'])
+            if table=="" and properties==False and propertyvalue=="" and database!="":
+                query+= "OPTIONAL MATCH (n)-[r]->(c) RETURN c "+f"limit {limit} "
+                print("NO 1 is executing")
+        
+            elif table!="" and properties!=False and propertyvalue!="" and depth!="":
+                query+= "OPTIONAL MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+"]-"
+                query+=f"(relatedNode) WITH {node} COLLECT(DISTINCT relatedNode) AS nodes{i}, COLLECT(r) AS allRelationships{i}" 
+                print("NO 2 is executing")
+            elif table!="" and properties==False and propertyvalue=="":
+                query+= "OPTIONAL MATCH path=(n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
+                query+=f"(relatedNode) WITH {node} COLLECT(DISTINCT relatedNode) AS nodes{i}, COLLECT(r) AS allRelationships{i}  "
+                print("NO 3 is executing")
+            else:
+                return {'error': "No Query Executed"} 
+            if i!=0:
+                nodes+=f"+nodes{i}"
+                allRelationships+=f"+allRelationships{i}"
+            elif i==0:
+                nodes+=f"nodes{i}"
+                allRelationships+=f"allRelationships{i}"
+            node+=f" nodes{i},allRelationships{i}, "
+
+        mid_query=f'''WITH {nodes} AS nodes, {allRelationships} AS allRelationships '''
+        fixed_query='''WITH REDUCE(edges = [], rels IN allRelationships |    edges + [rel in rels |       { source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }     ]) AS edges, nodes RETURN { edges: edges, nodes: nodes } AS graphData;'''    
+        
+        finalquery=str(query+mid_query+fixed_query)
+        print(finalquery)
         with driver.session(database=database) as session:
-            result = session.run(query).single()
+            result = session.run(finalquery).single()
         driver.close()
         return format_to_edge_node_dict(result)
         
