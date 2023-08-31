@@ -25,9 +25,9 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 def create_relation():
     if request.method == 'POST':
         data = request.get_json()
-        #print(data)
+        print(data)
         response=get_values(data)
-        # print("RESPONSE::::",response)
+        print("RESPONSE::::",response)
         return response
 
 @app.route('/getrelations', methods=['GET'])
@@ -64,12 +64,11 @@ def getdatabases():
     if request.method=='GET':
         response=GET_DATABASE()
         return jsonify(response)
-    
+
 @app.route('/getdata', methods=['POST'])
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
-        # print("RESPONSE IS __________",response)
         return jsonify(response)
 
 @app.route('/upload_csv_neo', methods=['POST'])
@@ -105,14 +104,11 @@ def managedb():
         reponse=manage_database(request)
         return jsonify(reponse)
 
-
 @app.route('/get_nodes_and_edges', methods=['POST'])
 def filternodes():
     if request.method == 'POST':
         response = get_nodes_and_edges()  # Call the function
         return response
 
-
-#the main function
 if __name__ == '__main__':
-    app.run(host="192.168.18.82",debug=True, port=34464)
+    app.run(host="192.168.18.95",debug=True, port=34464)

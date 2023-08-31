@@ -17,7 +17,7 @@ def get_relationships(request):
     driver = GraphDatabase.driver(uri, auth=(username, password))
 
     query = """
-        MATCH (source)-[relationship]->(target)
+        MATCH (source)-[relationship]-(target)
         RETURN DISTINCT labels(source) AS source_labels, type(relationship) AS relationship_type, labels(target) AS target_labels
     """
 

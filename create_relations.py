@@ -38,8 +38,9 @@ def relation(driver,targets,database,single_node=0,add_del='add',relations='mult
                     if relations=='single':
                         query=f"MATCH (source:{a['source']} {{{a['Source_property']}: '{a['Source_property_value']}'}}) "+f" WHERE source.{a['Source_property']} IS NOT NULL "+f"MATCH (target:{a['target']}) "+f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "+f" match (source)-[r:{a['relationship']}]->(target) "+" delete r RETURN source;"
                     with driver.session(database=database) as session:
-                                    session.run(query)
-        
+                        response=session.run(query)
+                        print(response)
+                        return response        
         #################### below we are deleting or adding relation between all nodes      
         else:
             ################## adding relation between all nodes
@@ -53,10 +54,11 @@ def relation(driver,targets,database,single_node=0,add_del='add',relations='mult
                 ################## deleting all relations between all specific nodes.. means deleting all relations on all nodes but nodes will be chosen on a condition like same CNIC or other identifier 
                 if relations=='multiple':
                     query=f"MATCH (source:{a['source']}) "+f" WHERE source.{a['Source_property']} IS NOT NULL "+f"MATCH (target:{a['target']}) "+f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "+f" match (source)-[r]->(target) "+" delete r RETURN source;"                    
-                    print(query)
+            # print(query)
             with driver.session(database=database) as session:
-                session.run(query)
-
+                response=session.run(query)
+                print(response)
+                return response
 def get_values(data):
     URI = data['URI']
     AUTH = (data['username'], data['password'])

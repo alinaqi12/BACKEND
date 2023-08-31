@@ -27,9 +27,9 @@ def get_node_name(uri,username,password,database,node_name):
         for entry in result1:
             relationship_types.append(entry['relationship_type'])
             related_labels.extend(entry['labels(relatedNode)'])
-        #print("node_name: ",node_name)     
-        #print("Relationship Types:", relationship_types)
-        #print("Related Labels:", related_labels)
+        print("node_name: ",node_name,type(get_node_name))     
+        print("Relationship Types:", relationship_types,type(relatio))
+        print("Related Labels:", related_labels)
 
         # Execute the MERGE query for each relationship type and related label
         with driver.session(database=database) as session:
@@ -40,6 +40,9 @@ def get_node_name(uri,username,password,database,node_name):
                         f"MERGE (startNode)-[:{relationship_type}]->(endNode)"
                     )
                     session.run(query)
+                    print("----------------------")
+                    print("QUERY:", query)
+                    print("----------------------")
         # Close the Neo4j driver
         driver.close()
         success_response ={'message': 'Successfully added the old relation to new if exist'}

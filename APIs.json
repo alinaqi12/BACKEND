@@ -70,6 +70,16 @@
         "target": "FIA2"
     },
     {
+        "relationship": "Good",
+        "source": "Person",
+        "target": "TAX_PAYER"
+    },
+    {
+        "relationship": "Good",
+        "source": "TAX_PAYER",
+        "target": "Person"
+    },
+    {
         "relationship": "Tax_types",
         "source": "Transactions",
         "target": "Tax_types"
@@ -88,6 +98,16 @@
         "relationship": "Transactions_log",
         "source": "Transactions_log",
         "target": "Transactions"
+    },
+    {
+        "relationship": "e",
+        "source": "Person",
+        "target": "SIM_Info"
+    },
+    {
+        "relationship": "e",
+        "source": "SIM_Info",
+        "target": "Person"
     },
     {
         "relationship": "HAS_ADDRESS",
@@ -110,6 +130,16 @@
         "target": "helloali"
     },
     {
+        "relationship": "d",
+        "source": "SIM_Info",
+        "target": "Person"
+    },
+    {
+        "relationship": "d",
+        "source": "Person",
+        "target": "SIM_Info"
+    },
+    {
         "relationship": "tax_info",
         "source": "Person",
         "target": "TAX_PAYER"
@@ -117,6 +147,26 @@
     {
         "relationship": "tax_info",
         "source": "TAX_PAYER",
+        "target": "Person"
+    },
+    {
+        "relationship": "h",
+        "source": "Person",
+        "target": "SIM_Info"
+    },
+    {
+        "relationship": "h",
+        "source": "SIM_Info",
+        "target": "Person"
+    },
+    {
+        "relationship": "k",
+        "source": "Person",
+        "target": "SIM_Info"
+    },
+    {
+        "relationship": "k",
+        "source": "SIM_Info",
         "target": "Person"
     }
 ]
