@@ -5,7 +5,7 @@ from neo4j import GraphDatabase
 import csv
 from Old_rels import get_node_name
 from Upload_image import image_upload
-
+        
 def upload_csv(request):
     try:
         Images=request.files
@@ -13,7 +13,7 @@ def upload_csv(request):
 
     except Exception as e:
         print("Error in Image : ",e)
-
+        
     try:
         request = request.json
         json_data = request['file_data']
@@ -46,7 +46,7 @@ def import_csv_to_neo4j(csv_path, label):
     username = "alinaqi"      
     password = "12345678"      
     database = 'testingdb'
-
+        
     driver = GraphDatabase.driver(uri, auth=(username, password))
     try:
         with open(csv_path, newline='') as csvfile:

@@ -17,10 +17,8 @@ from CreateD_BDeleteDB  import manage_database
 from Filters import get_nodes_and_edges
 
 
-
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) 
-
 
 @app.route('/createrelation', methods=['POST'])
 def create_relation():
@@ -111,17 +109,13 @@ def filternodes():
         response = get_nodes_and_edges()  # Call the function
         return response
     
-
 @app.route('/upload_image', methods=['POST'])
 def image_uploads():
     if request.method == 'POST':
+        print(request.get_json())
         response = image_upload(request.files,"TESTING")  # Call the function
         return response
     
-
-
-
-
 if __name__ == '__main__':
     app.run(host="192.168.18.95",debug=True, port=34464)
 
