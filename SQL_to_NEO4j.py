@@ -100,7 +100,7 @@ def Migrate_SQL_TO_NEO4j(session,cursor,source_database,keep_relations):
                             query = (
                                 f"MATCH (a:{table}), (b:{related_table}) "
                                 f"WHERE a.{fk_column} = b.{pk_column} "
-                                f"CREATE (a)-[]->(b)"
+                                f"CREATE (a)-[{relationship_type}]->(b)"
                             )
                             session.run(query)
         keep_relations(keep_relations)

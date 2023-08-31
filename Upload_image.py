@@ -12,19 +12,17 @@ def image_upload(File,name):
 
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
-    
-
-    
     image_data = file.read()
+
     for a in filetypes:
         if file.filename.lower().endswith(a):
             ext=a
     if ext==False:
-        return jsonify({'error': 'Invalid file type'}), 400
-        
+        return jsonify({'error': 'Invalid file type'}), 400        
+    
     image = Image.open(BytesIO(image_data))
     image.save(f'images/{name}{ext}')
 
-    return jsonify({'message': 'Image uploaded and processed successfully'}), 200
+    return 'Image uploaded and processed successfully'
 
 
