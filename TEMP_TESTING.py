@@ -1,32 +1,40 @@
+from flask import Flask, request, jsonify
+from io import BytesIO
+from PIL import Image
+import os
 
-from flask import Flask, jsonify, request
-from flask_cors import CORS
-from Nod_Rel import getdata
-import io
-import base64
+filetypes = ('.jpg', '.jpeg', '.png', '.gif')
+UPLOAD_FOLDER = 'images'  # Directory to store uploaded images
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}) 
-    
-@app.route('/getdata', methods=['POST'])
-def getgraph():
-    if request.method == 'POST':
-        nodes_and_edges = getdata(request.get_json())
-        image_data=open('images/outlook.png', 'rb').read()
-        # Check if there was an error
-        if isinstance(nodes_and_edges, str):
-            return jsonify({'error': nodes_and_edges})
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-        # Encode the image data as base64
-        encoded_image = base64.b64encode(image_data).decode()
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in filetypes
 
-        # Create a response JSON object with the image data
-        response_data = {
-            # 'graph_data': nodes_and_edges,
-            'image_data': encoded_image
-        }
 
-        return jsonify(response_data)
+def upload_image(request):
+    if 'image' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
 
-if __name__ == '__main__':
-    app.run(host='192.168.137.3', debug=True, port=34466)
+    file = request.files['image']
+
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+
+    if file and allowed_file(file.filename):
+        image_data = file.read()
+        name = file.filename.rsplit('.', 1)[0]  # Extract filename without extension
+        ext = '.' + file.filename.rsplit('.', 1)[1].lower()
+
+        # Create the images folder if it doesn't exist
+        if not os.path.exists(app.config['UPLOAD_FOLDER']):
+            os.makedirs(app.config['UPLOAD_FOLDER'])
+
+        image = Image.open(BytesIO(image_data))
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], f'{name}{ext}'))
+
+        return 'Image uploaded and processed successfully'
+
+    return jsonify({'error': 'Invalid file type'}), 400
+

@@ -13,6 +13,7 @@ from Reltype import get_relationships
 from ShortestPath import shortest_path
 from existing_node import get_node_labels
 from Upload_image import image_upload
+from TEMP_TESTING import upload_image
 from CreateD_BDeleteDB  import manage_database
 from Filters import get_nodes_and_edges
 
@@ -112,9 +113,15 @@ def filternodes():
 @app.route('/upload_image', methods=['POST'])
 def image_uploads():
     if request.method == 'POST':
-        print(request.get_json())
         response = image_upload(request.files,"TESTING")  # Call the function
         return response
+    
+@app.route('/upload_images', methods=['POST'])
+def image_uploadss():
+    response = upload_image(request,"TESTING")  # Call the function
+    return response
+
+
     
 if __name__ == '__main__':
     app.run(host="192.168.18.95",debug=True, port=34464)
