@@ -4,9 +4,16 @@ import csv
 from neo4j import GraphDatabase
 import csv
 from Old_rels import get_node_name
-
+from Upload_image import image_upload
 
 def upload_csv(request):
+    try:
+        Images=request.files
+        response = image_upload(Images,request['label_name'])
+
+    except Exception as e:
+        print("Error in Image : ",e)
+
     try:
         request = request.json
         json_data = request['file_data']
@@ -25,6 +32,8 @@ def upload_csv(request):
         if label=='':
             label = "Node"  # Default label is 'Node'
         response2 = import_csv_to_neo4j(csv_filename, label)
+        
+
         return jsonify({'message': 'CSV data converted and saved successfully in neo4j'},response2), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
