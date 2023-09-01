@@ -12,14 +12,14 @@ def get_node_name(uri,username,password,database,node_name):
                     ,r.basis_1 as sourceProp,r.basis_2 as relatedProp
 
                 """
-        print(query)
+        #print(query)
         with GraphDatabase.driver(uri, auth=(username, password)) as driver:
             
             with driver.session(database=database) as session:
                 
                 result = session.run(query, nodeName=node_name)
                 result1 = result.data()
-                print("REUSLT!: ",result1)
+                #print("REUSLT!: ",result1)
         driver.close()
 
 
@@ -30,14 +30,14 @@ def get_node_name(uri,username,password,database,node_name):
                     ,r.basis_1 as sourceProp,r.basis_2 as relatedProp
 
                 """
-        print(query)
+        #print(query)
         with GraphDatabase.driver(uri, auth=(username, password)) as driver:
             
             with driver.session(database=database) as session:
                 
                 result = session.run(query, nodeName=node_name)
                 result2 = result.data()
-                print("REUSLT2: ",result2)
+                #print("REUSLT2: ",result2)
         driver.close()
 
         sourceNode = []
@@ -48,7 +48,7 @@ def get_node_name(uri,username,password,database,node_name):
 
        #inserting the data for it pointing others
         for entry in result1:
-            print("enrty:",entry)
+            #print("enrty:",entry)
             sourceNode.append(entry['sourceNode'][0])
             relationship_types.append(entry['relationship_type'])
             related_labels.extend(entry['labels(relatedNode)'])
@@ -57,7 +57,7 @@ def get_node_name(uri,username,password,database,node_name):
 
         #inserting the data for others pointing it
         for entry in result2:
-            print("enrty:",entry)
+            #print("enrty:",entry)
             sourceNode.append(entry['sourceNode'][0])
             relationship_types.append(entry['relationship_type'])
             related_labels.extend(entry['labels(relatedNode)'])
@@ -65,26 +65,26 @@ def get_node_name(uri,username,password,database,node_name):
             relatedProp.append(entry['relatedProp'])
 
 
-        print("Source Node: ",sourceNode)     
-        print("Relationship Types:", relationship_types)
-        print("Related Labels:", related_labels)
-        print("Source Prop:", sourceProp)
-        print("Related Prop:", relatedProp)
+        #print("Source Node: ",sourceNode)     
+        #print("Relationship Types:", relationship_types)
+        #print("Related Labels:", related_labels)
+        #print("Source Prop:", sourceProp)
+        #print("Related Prop:", relatedProp)
 
 
         # Execute the MERGE query for each relationship type and related label
         with driver.session(database=database) as session:
             
             for i in range(len(sourceNode)):
-                print("Eerer",sourceNode[i],related_labels[i],relationship_types[i],sourceProp[i],relatedProp[i])
+                #print("Eerer",sourceNode[i],related_labels[i],relationship_types[i],sourceProp[i],relatedProp[i])
 
 
 
                 query=f"MATCH (source:{sourceNode[i]}) "+f"WHERE source.{sourceProp[i]} IS NOT NULL "+f"MATCH (target:{related_labels[i]}) "+f"WHERE target.{relatedProp[i]} = source.{sourceProp[i]} "+f"MERGE (source)-[:{relationship_types[i]}" + '{basis_1:'+f"'{sourceProp[i]}', "+"basis_2:"+ f"'{relatedProp[i]}'"+"}"+ "]->(target) RETURN source "
 
-                print("----------------------")
-                print("QUERY:", query)
-                print("----------------------")
+                #print("----------------------")
+                #print("QUERY:", query)
+                #print("----------------------")
                 
                 session.run(query)
 
