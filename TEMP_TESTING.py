@@ -5,12 +5,13 @@ import os
 
 
 def upload_image(request,name='NEW_TEST'):
-    image_data = request.data
+    request=request.files
+    image_data = request['image']
     
     ext='.png'
     
     image = Image.open(BytesIO(image_data))
-    image.save(f'images/{name}{ext}')
+    image.save(f'images/TESTING_NEW_VER.png')
     
     return 'Image uploaded and processed successfully'
 

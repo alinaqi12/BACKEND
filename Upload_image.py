@@ -21,7 +21,8 @@ def image_upload(File,name):
         return jsonify({'error': 'Invalid file type'}), 400        
     
     image = Image.open(BytesIO(image_data))
-    image.save(f'images/{name}{ext}')
+    # image.save(f'images/{name}{ext}')
+    image.save(f'images/TESTING_NEW_VER.png')
 
     return jsonify({'message':'Image uploaded and processed successfully'}), 200
 
