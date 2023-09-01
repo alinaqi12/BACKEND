@@ -21,8 +21,9 @@ def relation(driver,targets,database,single_node=0,add_del='add',relations='mult
                         f"WHERE source.{a['Source_property']} IS NOT NULL "  # Use 'IS NOT NULL' instead of 'exists()'
                         f"MATCH (target:{a['target']}) "
                         f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "
-                        f"MERGE (source)-[:{a['relationship']}]->(target) "
+                        f"MERGE (source)-[:{a['relationship']}" + '{basis_1:'+f"'{a['Source_property']}', "+"basis_2:"+f"'{a['Target_property']}'"+"}"+ "]->(target) "
                         "RETURN source;")
+                
                 ################## Deleting Relation
                 if add_del=='del':
                     ################## deleting all relations between two specific nodes 
@@ -45,7 +46,8 @@ def relation(driver,targets,database,single_node=0,add_del='add',relations='mult
         else:
             ################## adding relation between all nodes
             if add_del=='add':
-                query=f"MATCH (source:{a['source']}) "+f"WHERE source.{a['Source_property']} IS NOT NULL "+f"MATCH (target:{a['target']}) "+f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "+f"MERGE (source)-[:{a['relationship']}]->(target) "+"RETURN source;"
+                query=f"MATCH (source:{a['source']}) "+f"WHERE source.{a['Source_property']} IS NOT NULL "+f"MATCH (target:{a['target']}) "+f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "+f"MERGE (source)-[:{a['relationship']}" + '{basis_1:'+f"'{a['Source_property']}', "+"basis_2:"+ f"'{a['Target_property']}'"+"}"+ "]->(target) RETURN source "
+                print("CHECK !@#!@#!@: ",query)
             ################## deleting relation
             if add_del=='del':
                 ################## deleting a specific single relation between all nodes 
