@@ -1,6 +1,6 @@
 from neo4j import GraphDatabase
 from flask import Flask, request,json, jsonify
-
+from Node_icons import addNode_icon
 
 
 # Connect to the Neo4j database
@@ -10,9 +10,7 @@ password = "12345678"
 driver = GraphDatabase.driver(uri, auth=(username, password))
 database = 'testingdb'
 
-# Define a function to import data into Neo4j
 def import_data(data, node_name, unique_id_field):
-    print(data,'/////',node_name,'//////',unique_id_field)
     with driver.session(database=database) as session:
         for item in data:
             if unique_id_field in item:
@@ -43,6 +41,8 @@ def import_jformat_data(request):
         data = request.json
         node_name = request.args.get('node_name')
         unique_id_field = request.args.get('unique_id_field')
+        icon=request.args.get('icon')
+        addNode_icon(node_name,icon)
         
         if not data or not node_name or not unique_id_field:
             return jsonify({"error": "Missing required parameters"}), 400

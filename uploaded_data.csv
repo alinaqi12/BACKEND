@@ -1,51 +1,501 @@
-MobileNo,Incomming,Outgoing
-1234567890,2345678901,6789012345
-9876543210,5678901234,4567890123
-4567890123,5678901234,6789012345
-7890123456,2345678901,5678901234
-2345678901,6789012345,1234567890
-6789012345,7890123456,2345678901
-3456789012,9012345678,5678901234
-8901234567,2345678901,7890123456
-5678901234,1234567890,2345678901
-9012345678,5678901234,6789012345
-6789012340,2345678901,7890123456
-2345678909,7890123456,9012345678
-5678901235,6789012345,3456789012
-1234567894,5678901234,2345678901
-9876543219,7890123456,8901234567
-4567890126,5678901234,3456789012
-7890123453,6789012345,9012345678
-2345678907,7890123456,4567890123
-6789012341,9012345678,5678901234
-3456789010,5678901234,6789012345
-8901234565,1234567890,7890123456
-5678901238,2345678901,9012345678
-9012345674,3456789012,8901234567
-6789012349,7890123456,5678901234
-2345678908,5678901234,6789012345
-5678901231,6789012345,9012345678
-1234567897,7890123456,2345678901
-9876543212,5678901234,5678901234
-4567890120,7890123456,6789012345
-7890123455,5678901234,2345678901
-2345678906,6789012345,7890123456
-6789012342,7890123456,5678901234
-3456789015,5678901234,9012345678
-8901234568,1234567890,6789012345
-5678901233,2345678901,3456789012
-9012345671,9012345678,7890123456
-6789012347,7890123456,5678901234
-2345678904,5678901234,6789012345
-5678901236,6789012345,1234567890
-1234567892,7890123456,2345678901
-9876543215,5678901234,5678901234
-4567890128,7890123456,6789012345
-7890123451,5678901234,2345678901
-2345678903,6789012345,7890123456
-5678901232,7890123456,5678901234
-9012345673,5678901234,9012345678
-6789012346,1234567890,6789012345
-2345678905,2345678901,3456789012
-5678901237,9012345678,7890123456
-,,
+label,investortype,city,countrycode
+10Xelerator,company,Columbus,USA
+2BAngles,company,,
+55 Capital Partners,company,,
+A.G. Edwards & Sons,company,St. Louis,USA
+ABB,company,Zurich,CHE
+ABRY Partners,company,Boston,USA
+Accenture Technology Ventures,company,Palo Alto,USA
+ACI,company,,
+"AF Square, LLC",company,,
+Active Angels,company,,
+AGB Holdings,company,,
+Advancer,company,,
+Acina Investments,company,,
+Actinic Ventures LLC,company,,
+Anri Fund,company,,
+Advance Publications,company,Staten Island,USA
+0-1B Investments,company,,
+2010 NYU Stern Business Plan Competition,company,,
+"American Pioneer Ventures, Ltd",company,,
+ANA,company,,
+Arizona State University,company,,
+20:20 Multimedia Group,company,,
+All Metal Stamping,company,Abbotsford,USA
+AA Investments,company,,BMU
+AbbVie,company,Chicago,USA
+Accel-X Pte Ltd,company,,
+ACE & Company,,London,TUN
+Austrian Research Promotion Agency,company,,
+Acorn Energy,company,,
+5ideas.in,company,"Gurgaon, Haryana",IND
+AamigoO.com,company,,
+BioM AG,company,,
+American Family Insurance,company,,
+Alti-electronics,company,Seoul,KOR
+Avidia Bank,company,,
+American Express,company,,USA
+AIP Seed Capital,company,,
+Alienware,company,Miami,USA
+"Artisoft Group, LLC",company,,
+Bedford Funding,company,White Plains,USA
+Arch Grants,company,St. Louis,USA
+AT&T,company,Dallas,USA
+AZ Disruptors,company,,
+Autodesk,company,San Rafael,USA
+Avanzit,company,,ESP
+AOL,company,New York,USA
+Clal,company,Tel-Aviv,ISR
+Cheil Worldwide,company,,
+Arbor Ventures,company,,
+Architel LP,company,Dallas,USA
+Arts Alliance Media,company,Paris,GBR
+Assor,company,Paris,FRA
+DG-i,company,,
+Atrapalo,company,,
+Archetype,company,Tokyo,JPN
+AtHoc,company,San Mateo,USA
+Biogen Idec,company,Weston,USA
+AutoScout24,company,,
+betaworks,company,New York,USA
+Burda Cross Media,company,,
+EnCana,company,"Calgary, AB",CAN
+Confidential,company,,
+CryoLife,company,Kennesaw,USA
+Dekarta Capital,company,Riga,UKR
+GBSA Int. Investment Group,company,,
+Greenhouse Group,company,Eindhoven,NLD
+DS Digitale Seiten GmbH,company,,
+BoxGroup,company,New York,USA
+Bose International Investement Fund,company,Sahuarita,USA
+EDS,company,Plano,USA
+Brook Ventures,company,,
+Bulger Capital Partners,company,Boston,USA
+Elliott Management,company,New York,USA
+Cathay Life Insurance,company,Taipei,TWN
+Entropic Communications,company,San Diego,USA
+HEROLD Business Data,company,M    dling,AUT
+Epoq,company,London,GBR
+Evolution VC,company,,
+Cheapflights,company,London,GBR
+KCK Group,company,,
+Clifton Cowley Ventures,company,,
+FirstHand Technologies,company,"Ottawa, ON",CAN
+ESPN,company,Burbank,USA
+Fonds Soutien Rel ve,company,,
+FundersClub,company,San Francisco,USA
+ExploraMed,company,Mountain View,USA
+Farminers Startup Academy,company,Moscow,RUS
+Fidelity,company,,
+First Round,company,Riihim    ki,FIN
+CGD,company,,
+Full Speed Inc.,company,,
+Foley & Lardner,company,Boston,USA
+Dentsu,company,Tokyo,JPN
+Cisneros Group,company,,
+Gen-Probe,company,San Diego,USA
+Funding Strategy Partners,company,,
+Infinity Venture Fund,company,,
+Competitor Group,company,"San Diego,",USA
+Global IP Video,company,,
+Consolidated Press Holdings (CPH),company,,
+Ecelles Carson,company,,
+Cox Enterprises,company,Atlanta,USA
+Company Guides Venture Partners,,,
+BrainLAB,company,Feldkirchen,DEU
+hub:raum,company,Tel Aviv,ISR
+D2 Communications,company,Tokyo,JPN
+Corus Entertainment,company,"Toronto, Ontario",CAN
+I-SHIN,company,,
+DASH Ventures,company,,
+Daytona Ventures GmbH,company,,
+Greenspun,company,,
+Growth Story,company,,
+Guideline,company,New York,USA
+DivX,company,San Diego,USA
+Ideaspace Philippines,company,,
+DreamHost,company,Los Angeles,USA
+Deutsche Boerse,company,Eschborn,DEU
+Idyllic Software,company,Pune,IND
+E-tohum,company,,
+iJoin Limited,company,,
+Illumina,company,San Diego,USA
+Ilmarinen Mutual Pension Insurance Company,,,
+Imagination Technologies,company,Kings Langley,GBR
+I-Freek,company,,
+Forest Laboratories,company,New York,USA
+Iberdrola,company,Bilbao,ESP
+Enlabs,company,Rome,ITA
+Ideable Venture Fund,company,,
+eSupport.com,company,,
+Fundable.com,company,Powell,USA
+Film Victoria,company,Melbourne,USA
+FirstEnergy Corp.,company,Akron,USA
+Glaxo Group,company,Brentford,GBR
+Groupe des Ecoles de Telecommunications,company,,
+HLB Gross Collins,company,,
+Future US,company,,
+Hauslein & Company,company,,
+General Mills,company,,USA
+CFR Pharmaceuticals,company,Santiago,CHL
+Flat6Labs,company,Giza,EGY
+Ho-Chunk Inc.,company,,
+CNN.com,company,"Atlanta, GA 30348",USA
+Listen Ventures,company,,
+Humphrey Enterprises,company,Norton,USA
+GroupArgent,company,New York,USA
+Consolidated Edison,company,New York,USA
+Funding Circle,company,London,GBR
+Gaiacom,company,Forest Hills,USA
+CS Networks,company,London,GBR
+Harvard University,company,,
+Healthbox Accelerator,company,,
+Helinger Advertisement,company,Saint Petersburg,USA
+Gerber Goldschmidt Group,company,,
+Hitachi GST,company,San Jose,USA
+HopeLab,company,Redwood City,USA
+HPI Group,company,Salisbury,GBR
+Monsanto,company,Saint Louis,USA
+HBO,company,,
+Moosylvania Marketing,company,,
+Duke Energy Corporation,company,Charlotte,USA
+E! Networks,company,,
+HomeAdvisor,company,Lakewood,USA
+Electro Scientific Industries,company,Portland,USA
+Ellis International,company,Minneapolis,USA
+Empeeric,company,Tel Aviv,ISR
+EnjoyVenture,company,,
+Enubila Ventures,company,,
+"EOT, LLC",company,,
+"ePrize, Inc.",company,Pleasant Ridge,USA
+Karolinska,company,Stockholm,SWE
+Qunova,company,,
+QURE AB,company,,
+Qiagen,company,Venlo,NLD
+Keegan & Coppin Company,company,Santa Rosa,USA
+Kegonsa Technologies,company,,
+Kensey Nash Corporation,company,Exton,USA
+Kentucky Science and Technology corp.,company,Lexington,USA
+ABAB (Atlantic Business Angels Booster),fin-org,,
+Khaleeji Commercial Bank,company,,
+Kickstarter,company,New York,USA
+Kiip,company,San Francisco,USA
+Kingdom Holding Company,company,,
+Kinnevik Internet Venture,company,Stockholm,SWE
+Kistefos VC,company,,
+KKR,company,New York,USA
+Knight Foundation,company,Miami,USA
+Southwest Partners,company,,
+Knight Ridder,company,San Jose,USA
+Organizaci  n de Estudios Superiores de Ciencias Sociales,company,,
+Knology,company,,
+Knowledge Universe Education,company,,SGP
+Kodak Polychrome Graphics,company,,
+Kompas Gramedia,company,,
+Koninklijke Philips ,company,,
+Kopin Corporation,company,Westborough,USA
+Kormeli,company,Burlington,USA
+Koyosha,company,,
+KPN Belgium,company,Wemmel,BEL
+Kraynov Investments,company,,
+Kreos,company,,
+Marubeni Corporation,company,Tokyo,JPN
+KT Corp,company,"Seongnam-city, GyeongGi-Do",KOR
+KuvCapital,company,,
+Kuwait Life Sciences Company,company,,
+Kyowa Hakko Kirin,company,Tokyo,JPN
+L-3 Communications,company,Canton,USA
+L&P Investments,company,,
+"La Rocca, LLC",company,,
+Laboratory Corporation of America,company,,
+LAGbook Capital,company,,
+Lakeland Ventures Development,company,,
+Lamex Group,company,,
+Lamp Post Group,company,Chattanooga,USA
+Lanxess / Saltigo,company,,
+Last Chance Ads,company,,AUS
+Last Chance Holdings,company,,
+Maruho,company,,
+LATERAL,company,,
+Launch House,company,,
+LaunchPad Coworking,company,Austin,USA
+LaunchPadIgnition,company,,
+Moove-IT,company,Montevideo,URY
+Laureate Education,company,Baltimore,USA
+Lavauzelle,company,Pazanol,FRA
+Lawrence Capital Management,company,,
+Lawrence Transportation Systems,company,,
+LBO Invest,company,,
+LBR Investments SARL,company,,
+LBS Technologies,company,,
+LCH LLC,company,,
+LDK Solar,company,Xinyu City,CHN
+Listen.com,company,San Francisco,USA
+Leaf Clean Energy,,Washington,USA
+LeapFrog Investments,company,"Sydney, NSW",ZAF
+Lee Enterprises,company,Sherwood,USA
+Leismann & Partners,company,,
+Macquarie Energy,company,Houston,USA
+Lenovo,company,Singapore,USA
+Less Plastics,company,,
+Leta Capital,company,,
+Leucadia National,company,New York,USA
+Leung Investment Division,company,,
+Levinthal Capital,company,,
+LexisNexis,company,Albany,USA
+LG,company,Seoul,KOR
+Liberty Corporation,company,Greenville,USA
+Liberty Global,company,Englewood,USA
+Liberty Media,company,Englewood,USA
+Life Technologies,company,Carlsbad,USA
+Limelight Networks,company,Tempe,USA
+Limited Brands,company,Columbus,USA
+LIMOUSIN PARTICIPATION,company,,
+LinkMe Mobile,company,,
+SP,company,,
+Littelfuse,company,Chicago,USA
+Live Nation Entertainment,company,Beverly Hills,USA
+Live Oak Banking Company,,,
+"Live Oak Ventures, LLC",company,,
+Macromedia,company,San Jose,USA
+Madison Angels,company,,
+LiveOps,company,Santa Clara,USA
+Namecheap.com,company,,
+Tomen Electronics,company,,
+Locaweb,company,Sao Paulo,BRA
+Lockheed Martin,company,Bethesda,USA
+LVMH,company,Paris,FRA
+Nanotechnology Institute in Philadelphia Pennsylvania,company,,
+Logia Group,company,Mumbai,VNM
+Logitech,company,Vancouver,USA
+Longhouse Holding AG,company,,
+Sage Hill Group,company,,
+Magnolia,company,,
+OSU Cowboy Technologies,company,,
+Oten Inc.,company,,
+National Geographic,company,Washington,USA
+National Institute for Allergy and Infectious Disease,company,Bethesda,USA
+National Institute of Environmental Health and Safety,company,"Research Triangle Park,",USA
+Kaplan Early Learning Group,company,,
+National Institute of Mental Health,company,,
+National Institute on Drug Abuse (NIDA),company,Bethesda,USA
+National Institutes of Health (NIH),company,Bethesda,USA
+LSI,company,Milpitas,USA
+Northrop Grumman,company,Los Angeles,USA
+LUBio Science,company,,CHE
+Lundbeck,company,,DNK
+Makeover Solutions,company,New York,USA
+NBC Universal,company,,USA
+Manifold Products,company,Natick,USA
+NCI,company,Reston,USA
+Martha Stewart Living Omnimedia,company,New York,USA
+Masimo,company,Irvine,USA
+The Washington Post Company,company,"Washington, DC",USA
+Netflix,company,Los Gatos,USA
+Spansion,company,Sunnyvale,USA
+SPARK Impact,company,,
+SparkLabs (Korea),company,Seoul,KOR
+Spartan Mobile,company,,
+Spartoo,company,Grenoble,FRA
+New York Times,company,New York,USA
+Spice Global,company,,
+Neoforma,company,San Jose,USA
+Maxygen,company,Redwood City,USA
+NetAge (Japan),company,,
+Mayo Clinic Rochester,company,Rochester,USA
+MB Ventures,company,,
+MBC Ventures,company,,
+netprice.com,company,Tokyo,USA
+Network18,company,New Delhi,IND
+Networld,company,San Francisco,USA
+Springboard UK,company,,
+Neurato Investments,company,,
+Matthew Pritzker Company,,Chicago,USA
+Maxam Opportunities Fund LP,company,,
+Shin Kong Life Insurance,company,,
+MCI,company,,
+McKay Trust,company,,
+MDA,company,,
+Major Series A,company,,
+New business venture fund,company,,
+New Control,company,,
+MasterCard Worldwide,company,,
+SanomaVentures,company,Helsinki,NLD
+SAP,company,Walldorf,USA
+Quanta Computer,company,Tao Yuan Shien,TWN
+Satila Holding,company,,
+SBCVC Fund III Company,,,
+MisterContact Limited,company,,
+Qwest,company,Denver,USA
+Otto Group,company,Maastricht,NLD
+Schering,company,,
+Media One Direct,company,Aliso Viejo,USA
+Schottenstein Stores,company,Columbus,USA
+Radium Hospital Research Foundation,company,,
+Schwetje Digital,company,,
+MediaTek,company,Hsinchu City,TWN
+Ramius,company,Ottawa,CAN
+MedioStream,company,Los Altos,USA
+Scottish & Southern Energy,company,Perth,GBR
+MEDL Mobile,company,Fountain Valley,USA
+Medtronic,company,Minneapolis,USA
+Seed Hatchery,company,Memphis,USA
+Meltwater Entrepreneurial School of Technology,company,,
+Seedcamp,company,London,GBR
+"Recruit Co., Ltd",company,Tokyo,JPN
+Seedrs,company,London,GBR
+Seeqnce,company,,
+Mercury Boy ltd,company,,
+Shire,company,Dublin,IRL
+Private Funding,company,,
+Meredith,company,Des Moines,USA
+Sembcorp Industries,company,Singapore ,SGP
+Semtech,company,Camarillo,USA
+Micromedic,company,,
+The Online Circle Pty,company,Melbourne,AUS
+Microsoft,company,Redmond,USA
+Multiplier Capital,company,,
+W.L. Gore & Associates,company,,
+WA-8,company,,
+The Tornante Company,,,USA
+Mid-America Transplant Services,company,St. Louis,USA
+TheNetValue,company,,
+Thiel Foundation,company,,
+Think Tank Mobile,company,,
+Royal Dutch Shell,company,,
+Rules-Based Medicine,company,Austin,USA
+Runet Labs,company,,
+Third I Inc.,company,,
+Toshiba Corporation,company,Tokyo,JPN
+WACKER Chemie AG,company,,
+S-Refit,company,,
+S4C Digital Media,company,,
+Saab Automobile,company,,
+Tamra-Tacoma Capital Partners,company,New York,USA
+Technologies HumanID,company,,
+Technology Investment Company,,,
+Saban Media Group,company,,
+Sabre,company,Southlake,USA
+Safeguard Scientifics,company,Wayne,USA
+Taurus Value Creation,company,,
+Start DMC,company,,
+Taylor,company,North Mankato,USA
+Tayside Trading,company,,
+TCW/YFY,company,,
+Team Europe Ventures,company,,
+TechBros BV,company,,
+Telephone Acquisition Company,company,,
+TechLaunch,company,Clifton,USA
+Techne Corporation,company,Minneapolis,USA
+Technicolor,company,Hollywood,USA
+Samsung Electronics,company,Seoul,KOR
+Samurai Incubate,company,Tokyo,JPN
+Tejas Technologies,company,Little Rock,USA
+tf1,company,,
+Strauss Investments,company,,
+The Bill & Melinda Gates Foundation,company,,
+Tekelec International,company,Morrisville,USA
+Teknologisk Innovation,company,,
+Tektronix,company,Beaverton,USA
+Sanoch Management,company,,
+Telecom Italia,company,,
+Telefonica,company,Madrid,ESP
+Thomvest,company,,
+Telegraaf Media Groep (TMG),company,Amsterdam,NLD
+Telenav,company,Sunnyvale,USA
+Tigris Capital,company,,
+Tilia Quadrat,company,,
+Teliasonera,company,Stockholm,SWE
+Times Internet,company,Delhi,IND
+Times Mirror Company,,,USA
+TS Ventures GmbH,company,,
+wahwahwhoom,company,,
+Tellabs,company,Naperville,USA
+Middle East Management Centre,company,,
+Midi Minuit,company,,
+midVentures,company,Chicago,USA
+MIH,company,,
+MIH Print Africa,company,,
+Mikrojobb LTD,company,,
+Mitsui & Co,company,Tokyo,JPN
+Mitsui Sumitomo Insurance Company,,Tokyo,JPN
+Miyamoto International,company,,
+"Mizuho Capital Co.,Ltd.",company,,
+MJM Investments,company,,
+Ooga Labs,company,Palo Alto,USA
+Open Network Lab,company,,JPN
+MKN Web Solutions,company,Troy,USA
+MLC,company,,
+Unicorn,company,,
+TV Tokyo,company,,
+TVNZ Television,company,,
+United Communications Group,company,Gaithersburg,USA
+Tyco International,company,Princeton,USA
+United Internet,company,Montabur,DEU
+United Parcel Service,company,,
+United Technologies,company,Hartford,USA
+U.K. Steel Enterprise,company,,
+U.S. Department of Agriculture,company,Washington,USA
+U.S. Geothermal,company,Boise,USA
+U.S. Navy,company,,
+U.S. Small Business Administration,company,Washington,USA
+United Microelectronics,company,Hsinchu,TWN
+UCB Pharma,company,Brussels,BEL
+UFA Enterprises,company,,
+UJ Ventures,company,,
+UK Angel ComFund,company,,
+UK Ministry of Defence,company,,
+University of Deusto,company,,
+University of Maryland,company,,
+University of Michigan,company,,
+Unaxis Optics,company,,LIE
+MobileUp,company,,
+University of Southern California,company,Los Angeles,USA
+University of Southern Maine,company,Portland,USA
+Mohr Davidow,company,,
+University of Western Ontario,company,,
+UnLtd,company,,
+Upward Mobility,company,Seattle,VNM
+UpWest Labs,company,Palo Alto,USA
+Mopapp,company,London,ITA
+Morningside,company,,
+UTStarcom,company,Oakland,USA
+UUTech,company,Newtownabbey,GBR
+Motorola Solutions,company,Schaumburg,USA
+Value Creation & Company,,BILTHOVEN,NLD
+Vantage Partners,company,San Mateo,USA
+Movile,company,Sunnyvale,USA
+Various Angel Investors,company,,
+Vizrt,company,Bergen,NOR
+"Moxie Software, Inc.",company,Windsor,USA
+Varma Mutual Pension Insurance Company,,Helsinki,FIN
+VaynerMedia,company,New York,USA
+Velocity Capital BV,company,,
+Velolicity Capital BV,company,,
+MTV Networks,company,New York,USA
+Multimedia Development Corporation (MDeC),company,,
+Mylan,company,Canonsburg,USA
+Naavon,company,,
+Venture Technologies,company,,USA
+Venture Angels,company,,
+Venture Captial Fund of New England,company,,
+Walsin Lihwa,company,,
+i/o Ventures,company,San Francisco,USA
+VeraSun Energy,company,Brookings,USA
+Verdoso Media,company,,
+Weld North,company,,
+212,fin-org,Istanbul,TUR
+VeriFone,company,San Jose,USA
+Verigy,company,,
+VeriSign Authentication Services,company,Mountain View,USA
+Verizon,company,New York,USA
+Vermont Information Processing,company,Colchester,USA
+Walt Disney Steam Boat Ventures,company,,
+WAM LLC,company,,
+Vertex,company,Uxbridge,USA
+VI Investments,company,,
+VIA Technologies,company,Taipei,USA
+212 Capital Partners,fin-org,,
+Bargal R&D Investment,fin-org,,
+Viacom,company,New York,USA
+Vianney Investments,company,,

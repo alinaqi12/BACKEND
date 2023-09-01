@@ -5,17 +5,17 @@ from neo4j import GraphDatabase
 import csv
 from Old_rels import get_node_name
 from Upload_image import image_upload
-        
-def upload_csv(request):
-    try:
-        Images=request.files
-        response = image_upload(Images,request['label_name'])
+from Node_icons import addNode_icon
 
+def upload_csv(request):
+    request=request.json
+    try:        
+        addNode_icon(request['label_name'],request['icon'])
     except Exception as e:
         print("Error in Image : ",e)
         
     try:
-        request = request.json
+
         json_data = request['file_data']
 
         label=request['label_name']
@@ -54,7 +54,7 @@ def import_csv_to_neo4j(csv_path, label):
             column_names = next(reader)  # Read the header line
 
             # Replace spaces with underscores in header names
-            All_char = ['!',"@","#","$","%","^","&","*","(",")","_","-","=","+","[","{","]","}",";",":","'",'"',",","<",".",">","/","?","\\","|"] 
+            All_char = ['!',"@","#","$","%","^",' ',"&","*","(",")","_","-","=","+","[","{","]","}",";",":","'",'"',",","<",".",">","/","?","\\","|"] 
             for i in range(len(All_char)):
                 column_names = [column.replace(All_char[i], "_") for column in column_names]
 

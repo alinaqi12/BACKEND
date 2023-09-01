@@ -81,10 +81,6 @@ def get_node_name(uri,username,password,database,node_name):
 
 
                 query=f"MATCH (source:{sourceNode[i]}) "+f"WHERE source.{sourceProp[i]} IS NOT NULL "+f"MATCH (target:{related_labels[i]}) "+f"WHERE target.{relatedProp[i]} = source.{sourceProp[i]} "+f"MERGE (source)-[:{relationship_types[i]}" + '{basis_1:'+f"'{sourceProp[i]}', "+"basis_2:"+ f"'{relatedProp[i]}'"+"}"+ "]->(target) RETURN source "
-
-                #print("----------------------")
-                #print("QUERY:", query)
-                #print("----------------------")
                 
                 session.run(query)
 

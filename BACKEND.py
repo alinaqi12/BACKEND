@@ -109,17 +109,9 @@ def filternodes():
     if request.method == 'POST':
         response = get_nodes_and_edges()  # Call the function
         return response
+
+
     
-@app.route('/upload_image', methods=['POST'])
-def image_uploads():
-    if request.method == 'POST':
-        response = image_upload(request.files,"TESTING")  # Call the function
-        return response
-    
-@app.route('/upload_images', methods=['POST'])
-def image_uploadss():
-    response = upload_image(request,"TESTING_NEW")  # Call the function
-    return response
 
 if __name__ == '__main__':
     app.run(host="192.168.18.95",debug=True, port=34464)

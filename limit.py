@@ -1,4 +1,4 @@
-def remove_extra_nodes(data, limit=20):
+def remove_extra_nodes(data, limit):
     if 'nodes' not in data:
         return data
     
