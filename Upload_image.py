@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import Flask, request, jsonify
 from io import BytesIO
 from PIL import Image
 
@@ -24,3 +24,5 @@ def image_upload(File,name):
     image.save(f'images/{name}{ext}')
 
     return jsonify({'message':'Image uploaded and processed successfully'}), 200
+
+

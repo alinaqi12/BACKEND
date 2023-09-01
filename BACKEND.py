@@ -118,11 +118,9 @@ def image_uploads():
     
 @app.route('/upload_images', methods=['POST'])
 def image_uploadss():
-    response = upload_image(request,"TESTING")  # Call the function
+    response = upload_image(request,"TESTING_NEW")  # Call the function
     return response
 
-
-    
 if __name__ == '__main__':
     app.run(host="192.168.18.95",debug=True, port=34464)
 
