@@ -4,7 +4,7 @@ import csv
 from neo4j import GraphDatabase
 import csv
 from Old_rels import get_node_name
-from Upload_image import image_upload
+# from Upload_image import image_upload
 from Node_icons import addNode_icon
 
 def upload_csv(request):

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Call Date,Call Time,Duration (Seconds),Caller Number,Receiver Number
 2021-07-14,12:40:11,917,923734750,923029118
 2021-05-02,20:24:04,689,923269633,923491258
@@ -20000,60 +19999,3 @@ Call Date,Call Time,Duration (Seconds),Caller Number,Receiver Number
 2021-02-04,07:47:24,3502,923364681,923252651
 2021-05-21,11:03:39,381,923930939,923420908
 2021-07-31,08:27:59,1301,923531911,923987561
-,,,,
-=======
-CNIC,FirstName,LastName,City,Email,Gender,BOD
-1,John,Doe,New York,john.doe@example.com,Male,1/15/1990
-2,Jane,Smith,Los Angeles,jane.smith@example.com,Female,7/22/1988
-3,Michael,Johnson,Chicago,michael.johnson@example.com,Male,3/10/1995
-4,Emily,Brown,Houston,emily.brown@example.com,Female,11/5/1992
-5,William,Miller,Miami,william.miller@example.com,Male,9/30/1987
-6,Sophia,Wilson,Seattle,sophia.wilson@example.com,Female,12/18/1993
-7,James,Jones,San Francisco,james.jones@example.com,Male,4/8/1985
-8,Olivia,Davis,Boston,olivia.davis@example.com,Female,8/29/1991
-9,Liam,Johnson,Phoenix,liam.johnson@example.com,Male,2/17/1994
-10,Ava,Williams,Dallas,ava.williams@example.com,Female,6/12/1989
-11,Noah,Miller,Denver,noah.miller@example.com,Male,9/3/1996
-12,Emma,Martinez,San Diego,emma.martinez@example.com,Female,11/24/1998
-13,Lucas,Anderson,Portland,lucas.anderson@example.com,Male,3/7/1991
-14,Isabella,Lopez,Atlanta,isabella.lopez@example.com,Female,5/18/1987
-15,Ethan,Moore,Miami,ethan.moore@example.com,Male,9/8/1992
-16,Mia,Garcia,Chicago,mia.garcia@example.com,Female,12/31/1994
-17,Logan,Martinez,Houston,logan.martinez@example.com,Male,2/22/1996
-18,Sophia,Smith,Los Angeles,sophia.smith@example.com,Female,4/14/1989
-19,Liam,Davis,New York,liam.davis@example.com,Male,6/5/1997
-20,Olivia,Brown,Seattle,olivia.brown@example.com,Female,7/27/1993
-21,Noah,Johnson,Boston,noah.johnson@example.com,Male,9/18/1991
-22,Emma,Williams,San Francisco,emma.williams@example.com,Female,10/10/1998
-23,Lucas,Miller,Dallas,lucas.miller@example.com,Male,12/2/1988
-24,Isabella,Anderson,Phoenix,isabella.anderson@example.com,Female,2/23/1997
-25,Ethan,Martinez,Los Angeles,ethan.martinez@example.com,Male,4/15/1995
-26,Mia,Lopez,Chicago,mia.lopez@example.com,Female,6/7/1993
-27,Logan,Garcia,Houston,logan.garcia@example.com,Male,8/28/1991
-28,Sophia,Moore,Miami,sophia.moore@example.com,Female,10/20/1989
-29,Liam,Smith,New York,liam.smith@example.com,Male,12/11/1987
-30,Olivia,Davis,Seattle,olivia.davis@example.com,Female,2/2/1996
-31,Noah,Johnson,Boston,noah.johnson@example.com,Male,3/26/1994
-32,Emma,Williams,San Francisco,emma.williams@example.com,Female,5/17/1992
-33,Lucas,Miller,Dallas,lucas.miller@example.com,Male,7/8/1990
-34,Isabella,Anderson,Phoenix,isabella.anderson@example.com,Female,9/29/1988
-35,Ethan,Martinez,Los Angeles,ethan.martinez@example.com,Male,11/20/1986
-36,Mia,Lopez,Chicago,mia.lopez@example.com,Female,1/10/1995
-37,Logan,Garcia,Houston,logan.garcia@example.com,Male,3/3/1993
-38,Sophia,Moore,Miami,sophia.moore@example.com,Female,4/24/1991
-39,Liam,Smith,New York,liam.smith@example.com,Male,6/15/1989
-40,Olivia,Davis,Seattle,olivia.davis@example.com,Female,8/6/1987
-41,Noah,Johnson,Boston,noah.johnson@example.com,Male,9/26/1995
-42,Emma,Williams,San Francisco,emma.williams@example.com,Female,11/17/1993
-43,Lucas,Miller,Dallas,lucas.miller@example.com,Male,1/8/1991
-44,Isabella,Anderson,Phoenix,isabella.anderson@example.com,Female,3/1/1989
-45,Ethan,Martinez,Los Angeles,ethan.martinez@example.com,Male,4/22/1987
-46,Mia,Lopez,Chicago,mia.lopez@example.com,Female,6/13/1995
-47,Logan,Garcia,Houston,logan.garcia@example.com,Male,8/4/1993
-48,Sophia,Moore,Miami,sophia.moore@example.com,Female,10/25/1991
-49,Liam,Smith,New York,liam.smith@example.com,Male,12/16/1989
-50,butt,far,isl,asdfg,Male,12/9/2000
-51,erere,cfcf,ghq,bhjhb,Male,9/3/1999
-52,tttaaa,asdfsar,aref,saef,Male,9/9/2000
-,,,,,,
->>>>>>> 471c1badd1b79b41c1e44063fb05ea50f9ac78cf
