@@ -12,8 +12,8 @@ from FUNC_Jformat import import_jformat_data
 from Reltype import get_relationships
 from ShortestPath import shortest_path
 from existing_node import get_node_labels
-from Upload_image import image_upload
-from TEMP_TESTING import upload_image
+#from Upload_image import image_upload
+#from TEMP_TESTING import upload_image
 from CreateD_BDeleteDB  import manage_database
 from Filters import get_nodes_and_edges
 
@@ -114,6 +114,6 @@ def filternodes():
     
 
 if __name__ == '__main__':
-    app.run(host="192.168.18.95",debug=True, port=34464)
+    app.run(host="192.168.18.84",debug=True, port=34464)
 
 
