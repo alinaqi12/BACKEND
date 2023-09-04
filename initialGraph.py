@@ -13,9 +13,8 @@ def ini_graph(data):
         query=''
         nodes=''
         allRelationships=''
-        # print(type(Data))
         node=''
-    
+
         for i, a in enumerate(Data):
             table = a['table']
             properties = a['property']
@@ -46,7 +45,7 @@ def ini_graph(data):
         fixed_query='''WITH REDUCE(edges = [], rels IN allRelationships |    edges + [rel in rels |       { source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }     ]) AS edges, nodes RETURN { edges: edges, nodes: nodes } AS graphData;'''    
         
         finalquery=str(query+mid_query+fixed_query)
-        # print(finalquery)
+        print(finalquery)
         with driver.session(database=database) as session:
             result = session.run(finalquery).single()
         driver.close()

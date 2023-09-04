@@ -13,15 +13,11 @@ def upload_csv(request):
         addNode_icon(request['label_name'],request['icon'])
     except Exception as e:
         print("Error in Image : ",e)
-        
     try:
-
         json_data = request['file_data']
-
         label=request['label_name']
         if not json_data:
             return jsonify({'error': 'No JSON data provided'}), 400
-
         
         csv_filename = "uploaded_data.csv"
         # Convert JSON to CSV format and save to a file
@@ -52,7 +48,6 @@ def import_csv_to_neo4j(csv_path, label):
         with open(csv_path, newline='') as csvfile:
             reader = csv.reader(csvfile)
             column_names = next(reader)  # Read the header line
-
             # Replace spaces with underscores in header names
             All_char = ['!',"@","#","$","%","^",' ',"&","*","(",")","_","-","=","+","[","{","]","}",";",":","'",'"',",","<",".",">","/","?","\\","|"] 
             for i in range(len(All_char)):
@@ -63,13 +58,11 @@ def import_csv_to_neo4j(csv_path, label):
                     f"UNWIND $batch AS row\n"
                     f"MERGE (p:{label} {{"
                 )
-
                 for column in column_names:
                     query += f"  {column}: row['{column}'],"
-                
                 query = query[:-1]  # Remove the trailing comma
                 query += "});"
-                # print(query)
+
                 rows = []
                 for row in reader:
                     row_dict = dict(zip(column_names, row))
@@ -77,14 +70,10 @@ def import_csv_to_neo4j(csv_path, label):
                     if len(rows) == BATCH_SIZE:
                         session.run(query, batch=rows)
                         rows = []
-
                 # Import remaining rows
                 if rows:
                     session.run(query, batch=rows)
-
-        # old relationship making
         return get_node_name(uri,username,password,database,label)
-
     except Exception as e:
         print('Error is ', e)    
     driver.close()

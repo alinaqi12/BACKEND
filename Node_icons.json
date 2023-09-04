@@ -6,5 +6,65 @@
     {
         "Node": "good8",
         "icon": "Photo"
+    },
+    {
+        "Node": "test5",
+        "iconLabel": "Person"
+    },
+    {
+        "Node": "test7",
+        "iconLabel": "Person"
+    },
+    {
+        "Node": "test8",
+        "iconLabel": "Database"
+    },
+    {
+        "Node": "test9",
+        "iconLabel": "Database"
+    },
+    {
+        "Node": "test10",
+        "iconLabel": "Flight"
+    },
+    {
+        "Node": "test11",
+        "iconLabel": "Graph"
+    },
+    {
+        "Node": "test12",
+        "iconLabel": "Linux"
+    },
+    {
+        "Node": "Person",
+        "iconLabel": "PersonFilled"
+    },
+    {
+        "Node": "TAX_PAYER",
+        "iconLabel": "Bookmark"
+    },
+    {
+        "Node": "User_info",
+        "iconLabel": "Visuals"
+    },
+    {
+        "Node": "Transactions",
+        "iconLabel": "Cloud"
+    },
+    {
+        "Node": "test13",
+        "iconLabel": "Graph"
+    },
+    {
+        "Node": "Again",
+        "iconLabel": "BookmarkFilled"
+    },
+    {
+        "Node": "CDR",
+        "iconLabel": ""
+    },
+    {
+        "Node": "CDR",
+        "iconLabel": ""
     }
 ]
