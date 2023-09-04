@@ -36,7 +36,7 @@ def construct_conditions(properties):
 
     return " AND ".join(conditions)
 
-#app.route('/get_nodes_and_edges', methods=['POST'])
+@app.route('/get_nodes_and_edges', methods=['POST'])
 def get_nodes_and_edges():
     input_data = request.json
 
@@ -53,7 +53,7 @@ def get_nodes_and_edges():
 
             existence = item.get("existence", False)
             conditions = construct_conditions([item])
-
+            
             if existence:
                 query = f"""
                     MATCH path = (n:Person)-[r]->()
@@ -77,3 +77,6 @@ def get_nodes_and_edges():
 
     return jsonify({'edges': edges, 'nodes': nodes})
 
+if __name__ == '__main__':
+
+    app.run(host='localhost', port=34464, debug=True)
