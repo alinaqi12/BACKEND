@@ -15,7 +15,7 @@ from existing_node import get_node_labels
 #from Upload_image import image_upload
 #from TEMP_TESTING import upload_image
 from CreateD_BDeleteDB  import manage_database
-from Filters import get_nodes_and_edges
+from Filters4 import get_nodes_and_edges
 
 
 app = Flask(__name__)
@@ -110,8 +110,6 @@ def filternodes():
     if request.method == 'POST':
         response = get_nodes_and_edges()  # Call the function
         return response
-
-
     
 
 if __name__ == '__main__':

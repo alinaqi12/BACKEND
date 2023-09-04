@@ -36,7 +36,7 @@ def construct_conditions(properties):
 
     return " AND ".join(conditions)
 
-@app.route('/get_nodes_and_edges', methods=['POST'])
+#@app.route('/get_nodes_and_edges', methods=['POST'])
 def get_nodes_and_edges():
     input_data = request.json
 

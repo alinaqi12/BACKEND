@@ -27,7 +27,6 @@ def relationship_to_dict(rel):
         'type': rel.type
     }
 
-
 # Construct Cypher query conditions for multiple properties
 def construct_conditions(properties):
     conditions = []
@@ -40,7 +39,7 @@ def find_common_nodes_and_edges(session, conditions):
     query = f"""
         MATCH path = (n:Person)-[r]->()
         WHERE {conditions}
-        RETURN nodes(path) as Nodes, relationships(path) as Rels
+        RETURN DISTINCT nodes(path) as Nodes, relationships(path) as Rels
     """
     result = session.run(query)
     common_nodes = []
@@ -61,7 +60,7 @@ def find_common_nodes_and_edges(session, conditions):
 ##########################################################################
 ##########################################################################
 
-@app.route('/get_nodes_and_edges', methods=['POST'])
+#@app.route('/get_nodes_and_edges', methods=['POST'])
 def get_nodes_and_edges():
 
     input_data = request.json
