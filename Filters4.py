@@ -1,3 +1,5 @@
+#Removed Duplication
+
 from flask import Flask, request, jsonify
 from neo4j import GraphDatabase
 app = Flask(__name__)
@@ -32,6 +34,32 @@ def construct_conditions(properties):
     for prop in properties:
         conditions.append(f"n.{prop['property']} = '{prop['propertyvalue']}'")
     return " AND ".join(conditions)
+
+# Function to find common nodes and edges based on multiple conditions
+def find_common_nodes_and_edges(session, conditions):
+    query = f"""
+        MATCH path = (n:Person)-[r]->()
+        WHERE {conditions}
+        RETURN DISTINCT nodes(path) as Nodes, relationships(path) as Rels
+    """
+    result = session.run(query)
+    common_nodes = []
+    common_edges = []
+
+    for record in result:
+        nodes = [node_to_dict(node) for node in record["Nodes"]]
+        edges = [relationship_to_dict(rel) for rel in record["Rels"]]
+
+        if not common_nodes:
+            common_nodes.extend(nodes)
+        else:
+            common_nodes = [node for node in common_nodes if node in nodes]
+
+        common_edges.extend(edges)
+
+    return common_nodes, common_edges
+##########################################################################
+##########################################################################
 
 #@app.route('/get_nodes_and_edges', methods=['POST'])
 def get_nodes_and_edges():
@@ -140,9 +168,30 @@ def get_nodes_and_edges():
                         edges.extend([relationship_to_dict(rel) for rel in record["Rels"]])
                         nodes.extend([node_to_dict(node) for node in record["Nodes"]])
 
-                
-    return jsonify({'edges': edges, 'nodes': nodes})
+                else:
+                    common_conditions = [item for item in input_data if item.get("condition") == "is common node"]
+                    if common_conditions:
+                        common_nodes, common_edges = find_common_nodes_and_edges(
+                            session,
+                            construct_conditions(common_conditions)
+                        )
+                        nodes.extend(common_nodes)
+                        edges.extend(common_edges)
 
-if __name__ == '__main__':
-    app.run(host='localhost', port=9090, debug=True)
+    #loops to avoid duplication    
+    unique_edges = []
+    for edge in edges:
+        if edge not in unique_edges:
+            unique_edges.append(edge)
 
+    unique_nodes = []
+    for node in nodes:
+        if node not in unique_nodes:
+            unique_nodes.append(node)
+
+    return jsonify({'edges': unique_edges, 'nodes': unique_nodes})
+
+    #return jsonify({'edges': edges, 'nodes': nodes})
+
+#if __name__ == '__main__':
+#   app.run(host='localhost', port=34465, debug=True)
