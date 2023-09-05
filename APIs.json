@@ -1,172 +1,599 @@
-[
+{
+  "edges": [{ "source": "6593", "target": "10050", "type": "INCOMMING_CALL" }],
+  "nodes": [
     {
-        "relationship": "Transactions",
-        "source": "TAX_PAYER",
-        "target": "Transactions"
+      "id": "6593",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "12:40:11",
+        "Caller_Number": "923734750",
+        "Duration__Seconds_": "917",
+        "Receiver_Number": "923029118",
+        "Call_Date": "2021-07-14"
+      }
     },
     {
-        "relationship": "Transactions",
-        "source": "Transactions",
-        "target": "TAX_PAYER"
+      "id": "10050",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "06:10:01",
+        "Caller_Number": "923029118",
+        "Duration__Seconds_": "184",
+        "Receiver_Number": "923547883",
+        "Call_Date": "2021-10-10"
+      }
     },
     {
-        "relationship": "TELECOM1",
-        "source": "User_info",
-        "target": "SIM_Info"
+      "id": "13753",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "03:30:09",
+        "Caller_Number": "923029118",
+        "Duration__Seconds_": "1790",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-09-04"
+      }
     },
     {
-        "relationship": "TELECOM1",
-        "source": "SIM_Info",
-        "target": "User_info"
+      "id": "22742",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "08:43:11",
+        "Caller_Number": "923029118",
+        "Duration__Seconds_": "3176",
+        "Receiver_Number": "923084590",
+        "Call_Date": "2021-01-22"
+      }
     },
     {
-        "relationship": "TELECOM2",
-        "source": "User_info",
-        "target": "SIM_Info"
+      "id": "14059",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "15:16:14",
+        "Caller_Number": "923029118",
+        "Duration__Seconds_": "15",
+        "Receiver_Number": "923768358",
+        "Call_Date": "2021-11-21"
+      }
     },
     {
-        "relationship": "TELECOM2",
-        "source": "SIM_Info",
-        "target": "User_info"
+      "id": "17813",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "05:56:03",
+        "Caller_Number": "923029118",
+        "Duration__Seconds_": "1154",
+        "Receiver_Number": "923843198",
+        "Call_Date": "2021-08-16"
+      }
     },
     {
-        "relationship": "TELECOM3",
-        "source": "User_info",
-        "target": "SIM_Info"
+      "id": "6594",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "20:24:04",
+        "Caller_Number": "923269633",
+        "Duration__Seconds_": "689",
+        "Receiver_Number": "923491258",
+        "Call_Date": "2021-05-02"
+      }
     },
     {
-        "relationship": "TELECOM3",
-        "source": "SIM_Info",
-        "target": "User_info"
+      "id": "19067",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "06:20:03",
+        "Caller_Number": "923491258",
+        "Duration__Seconds_": "798",
+        "Receiver_Number": "923550090",
+        "Call_Date": "2021-06-23"
+      }
     },
     {
-        "relationship": "User_info",
-        "source": "Person",
-        "target": "User_info"
+      "id": "25794",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "02:00:39",
+        "Caller_Number": "923491258",
+        "Duration__Seconds_": "1538",
+        "Receiver_Number": "923733129",
+        "Call_Date": "2021-11-06"
+      }
     },
     {
-        "relationship": "User_info",
-        "source": "User_info",
-        "target": "Person"
+      "id": "19851",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "16:50:50",
+        "Caller_Number": "923491258",
+        "Duration__Seconds_": "2946",
+        "Receiver_Number": "923713246",
+        "Call_Date": "2021-07-03"
+      }
     },
     {
-        "relationship": "CNIC",
-        "source": "FIA2",
-        "target": "NADRA2"
+      "id": "11829",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "22:18:38",
+        "Caller_Number": "923491258",
+        "Duration__Seconds_": "1920",
+        "Receiver_Number": "923992413",
+        "Call_Date": "2021-11-05"
+      }
     },
     {
-        "relationship": "CNIC",
-        "source": "NADRA2",
-        "target": "FIA2"
+      "id": "16651",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "10:32:58",
+        "Caller_Number": "923852101",
+        "Duration__Seconds_": "2684",
+        "Receiver_Number": "923269633",
+        "Call_Date": "2021-11-27"
+      }
     },
     {
-        "relationship": "Name",
-        "source": "FIA2",
-        "target": "NADRA2"
+      "id": "17800",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "18:04:08",
+        "Caller_Number": "923854964",
+        "Duration__Seconds_": "1892",
+        "Receiver_Number": "923269633",
+        "Call_Date": "2021-01-26"
+      }
     },
     {
-        "relationship": "Name",
-        "source": "NADRA2",
-        "target": "FIA2"
+      "id": "15689",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "19:06:36",
+        "Caller_Number": "923491258",
+        "Duration__Seconds_": "2520",
+        "Receiver_Number": "923673324",
+        "Call_Date": "2021-03-13"
+      }
     },
     {
-        "relationship": "Good",
-        "source": "Person",
-        "target": "TAX_PAYER"
+      "id": "9538",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "10:40:37",
+        "Caller_Number": "923491258",
+        "Duration__Seconds_": "3512",
+        "Receiver_Number": "923489699",
+        "Call_Date": "2021-08-06"
+      }
     },
     {
-        "relationship": "Good",
-        "source": "TAX_PAYER",
-        "target": "Person"
+      "id": "21986",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "23:06:30",
+        "Caller_Number": "923313652",
+        "Duration__Seconds_": "2357",
+        "Receiver_Number": "923269633",
+        "Call_Date": "2021-03-11"
+      }
     },
     {
-        "relationship": "Tax_types",
-        "source": "Transactions",
-        "target": "Tax_types"
+      "id": "18185",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "19:21:54",
+        "Caller_Number": "923256876",
+        "Duration__Seconds_": "2286",
+        "Receiver_Number": "923269633",
+        "Call_Date": "2021-10-17"
+      }
     },
     {
-        "relationship": "Tax_types",
-        "source": "Tax_types",
-        "target": "Transactions"
+      "id": "10660",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "01:22:38",
+        "Caller_Number": "923966149",
+        "Duration__Seconds_": "1964",
+        "Receiver_Number": "923269633",
+        "Call_Date": "2021-07-17"
+      }
     },
     {
-        "relationship": "Transactions_log",
-        "source": "Transactions",
-        "target": "Transactions_log"
+      "id": "6595",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "11:07:42",
+        "Caller_Number": "923420908",
+        "Duration__Seconds_": "1311",
+        "Receiver_Number": "923478621",
+        "Call_Date": "2021-07-25"
+      }
     },
     {
-        "relationship": "Transactions_log",
-        "source": "Transactions_log",
-        "target": "Transactions"
+      "id": "26046",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "22:33:49",
+        "Caller_Number": "923490688",
+        "Duration__Seconds_": "1694",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-11-22"
+      }
     },
     {
-        "relationship": "e",
-        "source": "Person",
-        "target": "SIM_Info"
+      "id": "26396",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "13:47:40",
+        "Caller_Number": "923478621",
+        "Duration__Seconds_": "2696",
+        "Receiver_Number": "923272009",
+        "Call_Date": "2021-03-11"
+      }
     },
     {
-        "relationship": "e",
-        "source": "SIM_Info",
-        "target": "Person"
+      "id": "12835",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "08:35:41",
+        "Caller_Number": "923900134",
+        "Duration__Seconds_": "476",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-10-07"
+      }
     },
     {
-        "relationship": "HAS_ADDRESS",
-        "source": "jsonnode",
-        "target": "address"
+      "id": "16310",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "15:55:48",
+        "Caller_Number": "923779433",
+        "Duration__Seconds_": "653",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-04-14"
+      }
     },
     {
-        "relationship": "HAS_ADDRESS",
-        "source": "address",
-        "target": "jsonnode"
+      "id": "10790",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "08:27:04",
+        "Caller_Number": "923506258",
+        "Duration__Seconds_": "1897",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-03-22"
+      }
     },
     {
-        "relationship": "HAS_ADDRESS",
-        "source": "helloali",
-        "target": "address"
+      "id": "16171",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "04:55:20",
+        "Caller_Number": "923478621",
+        "Duration__Seconds_": "2206",
+        "Receiver_Number": "923396020",
+        "Call_Date": "2021-12-22"
+      }
     },
     {
-        "relationship": "HAS_ADDRESS",
-        "source": "address",
-        "target": "helloali"
+      "id": "14533",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "22:17:55",
+        "Caller_Number": "923012205",
+        "Duration__Seconds_": "1846",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-11-15"
+      }
     },
     {
-        "relationship": "d",
-        "source": "SIM_Info",
-        "target": "Person"
+      "id": "25049",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "22:33:27",
+        "Caller_Number": "923072253",
+        "Duration__Seconds_": "2719",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-07-01"
+      }
     },
     {
-        "relationship": "d",
-        "source": "Person",
-        "target": "SIM_Info"
+      "id": "26591",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "11:03:39",
+        "Caller_Number": "923930939",
+        "Duration__Seconds_": "381",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-05-21"
+      }
     },
     {
-        "relationship": "tax_info",
-        "source": "Person",
-        "target": "TAX_PAYER"
+      "id": "8941",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "10:23:37",
+        "Caller_Number": "923478621",
+        "Duration__Seconds_": "2602",
+        "Receiver_Number": "923502630",
+        "Call_Date": "2021-08-06"
+      }
     },
     {
-        "relationship": "tax_info",
-        "source": "TAX_PAYER",
-        "target": "Person"
+      "id": "23888",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "22:46:33",
+        "Caller_Number": "923478621",
+        "Duration__Seconds_": "2261",
+        "Receiver_Number": "923284914",
+        "Call_Date": "2021-04-28"
+      }
     },
     {
-        "relationship": "h",
-        "source": "Person",
-        "target": "SIM_Info"
+      "id": "8031",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "08:34:59",
+        "Caller_Number": "923417829",
+        "Duration__Seconds_": "1317",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-01-26"
+      }
     },
     {
-        "relationship": "h",
-        "source": "SIM_Info",
-        "target": "Person"
+      "id": "24539",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "09:54:15",
+        "Caller_Number": "923952634",
+        "Duration__Seconds_": "3400",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-07-25"
+      }
     },
     {
-        "relationship": "k",
-        "source": "Person",
-        "target": "SIM_Info"
+      "id": "20236",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "19:37:49",
+        "Caller_Number": "923615312",
+        "Duration__Seconds_": "3019",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-11-21"
+      }
     },
     {
-        "relationship": "k",
-        "source": "SIM_Info",
-        "target": "Person"
+      "id": "21290",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "09:46:58",
+        "Caller_Number": "923383612",
+        "Duration__Seconds_": "3082",
+        "Receiver_Number": "923420908",
+        "Call_Date": "2021-01-16"
+      }
+    },
+    {
+      "id": "6596",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "21:58:48",
+        "Caller_Number": "923228395",
+        "Duration__Seconds_": "1120",
+        "Receiver_Number": "923237498",
+        "Call_Date": "2021-02-08"
+      }
+    },
+    {
+      "id": "24143",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "22:02:31",
+        "Caller_Number": "923237498",
+        "Duration__Seconds_": "3346",
+        "Receiver_Number": "923180282",
+        "Call_Date": "2021-07-22"
+      }
+    },
+    {
+      "id": "26493",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "19:24:27",
+        "Caller_Number": "923356059",
+        "Duration__Seconds_": "2307",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-06-29"
+      }
+    },
+    {
+      "id": "9736",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "04:09:11",
+        "Caller_Number": "923237498",
+        "Duration__Seconds_": "1145",
+        "Receiver_Number": "923770049",
+        "Call_Date": "2021-06-13"
+      }
+    },
+    {
+      "id": "21833",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "15:00:28",
+        "Caller_Number": "923490958",
+        "Duration__Seconds_": "2775",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-11-28"
+      }
+    },
+    {
+      "id": "13664",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "06:51:43",
+        "Caller_Number": "923446495",
+        "Duration__Seconds_": "1159",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-04-07"
+      }
+    },
+    {
+      "id": "8773",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "09:10:49",
+        "Caller_Number": "923317383",
+        "Duration__Seconds_": "799",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-01-01"
+      }
+    },
+    {
+      "id": "7786",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "19:52:53",
+        "Caller_Number": "923364469",
+        "Duration__Seconds_": "487",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-02-20"
+      }
+    },
+    {
+      "id": "21268",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "13:08:32",
+        "Caller_Number": "923503828",
+        "Duration__Seconds_": "2111",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-05-09"
+      }
+    },
+    {
+      "id": "18743",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "14:18:57",
+        "Caller_Number": "923478812",
+        "Duration__Seconds_": "380",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-11-28"
+      }
+    },
+    {
+      "id": "12117",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "16:04:40",
+        "Caller_Number": "923610438",
+        "Duration__Seconds_": "2112",
+        "Receiver_Number": "923228395",
+        "Call_Date": "2021-08-30"
+      }
+    },
+    {
+      "id": "6597",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "20:12:35",
+        "Caller_Number": "923312269",
+        "Duration__Seconds_": "1291",
+        "Receiver_Number": "923056161",
+        "Call_Date": "2021-01-21"
+      }
+    },
+    {
+      "id": "16276",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "01:08:00",
+        "Caller_Number": "923056161",
+        "Duration__Seconds_": "849",
+        "Receiver_Number": "923661334",
+        "Call_Date": "2021-04-21"
+      }
+    },
+    {
+      "id": "15379",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "21:15:22",
+        "Caller_Number": "923896585",
+        "Duration__Seconds_": "3398",
+        "Receiver_Number": "923312269",
+        "Call_Date": "2021-05-11"
+      }
+    },
+    {
+      "id": "13213",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "16:22:02",
+        "Caller_Number": "923056161",
+        "Duration__Seconds_": "1042",
+        "Receiver_Number": "923696626",
+        "Call_Date": "2021-06-10"
+      }
+    },
+    {
+      "id": "10524",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "03:05:04",
+        "Caller_Number": "923773782",
+        "Duration__Seconds_": "1094",
+        "Receiver_Number": "923312269",
+        "Call_Date": "2021-09-27"
+      }
+    },
+    {
+      "id": "25597",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "23:18:53",
+        "Caller_Number": "923019953",
+        "Duration__Seconds_": "2464",
+        "Receiver_Number": "923312269",
+        "Call_Date": "2021-01-10"
+      }
+    },
+    {
+      "id": "21358",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "08:30:47",
+        "Caller_Number": "923138219",
+        "Duration__Seconds_": "1772",
+        "Receiver_Number": "923312269",
+        "Call_Date": "2021-03-19"
+      }
+    },
+    {
+      "id": "15208",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "07:58:42",
+        "Caller_Number": "923506198",
+        "Duration__Seconds_": "2932",
+        "Receiver_Number": "923312269",
+        "Call_Date": "2021-09-04"
+      }
+    },
+    {
+      "id": "9242",
+      "label": "CDR",
+      "properties": {
+        "Call_Time": "02:48:43",
+        "Caller_Number": "923056161",
+        "Duration__Seconds_": "1178",
+        "Receiver_Number": "923367056",
+        "Call_Date": "2021-02-25"
+      }
     }
-]
+  ]
+}

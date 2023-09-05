@@ -66,5 +66,9 @@
     {
         "Node": "CDR",
         "iconLabel": ""
+    },
+    {
+        "Node": "CDR",
+        "iconLabel": "PersonFilled"
     }
 ]

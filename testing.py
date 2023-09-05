@@ -1,73 +1,85 @@
 from neo4j import GraphDatabase
-import json
+import re
 
-neo4j_uri = 'bolt://localhost:7687'
-neo4j_username = 'alinaqi'
-neo4j_password = '12345678'
-database='testingdb'
-neo4j_driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_username, neo4j_password))
-session = neo4j_driver.session(database=database)
 
-def get_child_nodes(session, node_id):
-    query = (
-        "MATCH (a)-[*0..1]->(child) "
-        f"WHERE ID(a) = {node_id} RETURN child"
-    )
-    result = session.run(query)
-
-    child_nodes = [record["child"] for record in result]
-    return child_nodes
-
-def get_node_and_child_nodes(Data):
-    table=Data['Table']
-    field=Data['field']
-    field_value=Data['field_value']
-    query =f"MATCH (a:{table} {{{field}:'{field_value}'}})  "+"RETURN id(a) as nodeID,a"
-    #print(query)
-    result = session.run(query)
-    s= result.single()
-    node_id = s['nodeID']
-    Parent=s['a']
-    #print(Parent)
-    #print("Node ID:", node_id)
-    try:
-        child_nodes =get_child_nodes(session, node_id)
-    except :
-        print("No child elements! ")
-    return Parent, child_nodes
-
-def close():
-    session.close()
-    neo4j_driver.close()
-
-def convert_to_json(node):
-
-    labels = node.labels
-    properties = dict(node)
-
-    json_data = {
-        "labels": list(labels),
-        "properties": properties
+# Define a function to execute the Cypher query and format the result
+def execute_query_and_format_result(uri, username, password,database='testingdb'):
+    formatted_result = {
+        "edges": [],
+        "nodes": []
     }
 
-    json_string = json.dumps(json_data, indent=None)
+    # Connect to the Neo4j database
+    with GraphDatabase.driver(uri, auth=(username, password)) as driver:
+        with driver.session(database=database) as session:
+            # Your Cypher query
+            cypher_query = """
+            MATCH (n:CDR)
+            WHERE (n)-[]->()
+            WITH DISTINCT n
+            LIMIT 5
+            MATCH (n)-[r*0..1]-(relatedNode)
+            RETURN COLLECT(DISTINCT relatedNode) AS nodes, COLLECT(DISTINCT r) AS relationships
+            """
 
-    #print(json_string)
-    return json_string
-coa=[]
+            result = session.run(cypher_query).single()
+            #print(result)
+            # Format nodes
+            for node in result["nodes"]:
+ 
 
-def Get_Data(Data):
-    Parent_node,Child_node=get_node_and_child_nodes(Data)
-     
-    for child in Child_node:
-        if child.id!=Parent_node.id:
-            res=convert_to_json(child)
-            coa.append(res)
-    
-    # coa_cleaned = [json_string.replace('\n', '') for json_string in res]
-    for a in coa:
-        print(a)
-    Parent_node=convert_to_json(Parent_node)
-    print(Parent_node)
-#Data={'Table':'Person','field':'CNIC','field_value':'5551879999'}
-#Get_Data(Data)
+                node_id= node.element_id
+
+                last_colon_index = node_id.rfind(":")  # Find the last occurrence of ":"
+
+                if last_colon_index != -1:
+                    node_id1 = node_id[last_colon_index + 1:]  # Slice the string after the last ":"
+                   
+
+                formatted_node = {
+                    "id":node_id1,
+                    "label": list(node.labels)[0],  # Assuming a node has only one label
+                    "properties": dict(node)
+                }
+
+                formatted_result["nodes"].append(formatted_node)
+
+            # Format relationships
+
+            for rel in result["relationships"][1]:
+               
+                
+                rel_node1 = rel.nodes[0].element_id
+                rel_node2 = rel.nodes[1].element_id
+
+
+                last_colon_index = rel_node1.rfind(":")  # Find the last occurrence of ":"
+
+                if last_colon_index != -1:
+                    source_id = rel_node1[last_colon_index + 1:]  # Slice the string after the last ":"
+
+                last_colon_index = rel_node2.rfind(":")  # Find the last occurrence of ":"
+
+                if last_colon_index != -1:
+                    target_id = rel_node2[last_colon_index + 1:]  # Slice the string after the last ":"
+
+
+                formatted_edge = {
+                    "source": source_id,
+                    "target": target_id,
+                    "type": rel.type
+                }
+                formatted_result["edges"].append(formatted_edge)
+    # print(formatted_result)
+    return formatted_result
+
+# Define your Neo4j connection details
+neo4j_uri = "bolt://localhost:7687"
+neo4j_username = "alinaqi"
+neo4j_password = "12345678"
+database='testingdb'
+# Execute the query and format the result
+formatted_result = execute_query_and_format_result(neo4j_uri, neo4j_username, neo4j_password,database)
+
+# Print or use the formatted result as needed
+# print(formatted_result)

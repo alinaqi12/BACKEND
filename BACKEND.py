@@ -13,7 +13,7 @@ from Reltype import get_relationships
 from ShortestPath import shortest_path
 from existing_node import get_node_labels
 #from Upload_image import image_upload
-#from TEMP_TESTING import upload_image
+from TESTING2 import Graph_Data
 from CreateD_BDeleteDB  import manage_database
 from Filters import get_nodes_and_edges
 
@@ -69,7 +69,14 @@ def getdatabases():
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
-        print('///',response)
+        # print('///',response)
+        return jsonify(response)
+
+@app.route('/geta', methods=['POST'])
+def getgraph1():
+    if request.method=='POST':
+        response=Graph_Data(request.get_json())
+        # print('///',response)
         return jsonify(response)
 
 @app.route('/upload_csv_neo', methods=['POST'])
@@ -97,13 +104,14 @@ def get_shortestpath():
 def existing_rels():
     if request.method=="POST":
         reponse=get_relationships(request)
+        print(reponse)
         return jsonify(reponse)
 
 @app.route('/managedatabase', methods=['POST'])
 def managedb():
     if request.method=="POST":
         reponse=manage_database(request)
-        return jsonify(reponse)
+        return reponse
 
 @app.route('/get_nodes_and_edges', methods=['POST'])
 def filternodes():
@@ -112,9 +120,7 @@ def filternodes():
         return response
 
 
-    
-
 if __name__ == '__main__':
-    app.run(host="192.168.18.84",debug=True, port=34464)
+    app.run(host="192.168.18.95",debug=True, port=34464)
 
 
