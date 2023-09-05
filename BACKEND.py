@@ -81,11 +81,13 @@ def getgraph1():
 
 @app.route('/upload_csv_neo', methods=['POST'])
 def csv():
+    print("THIS IS THE REQUES FROM FE: ",request)
     response=upload_csv(request)
     return response 
 
 @app.route('/upload_json_neo', methods=['POST'])
 def json():
+
     response=import_jformat_data(request)
     return response
 
@@ -120,6 +122,6 @@ def filternodes():
         return response
 
 if __name__ == '__main__':
-    app.run(host="192.168.18.95",debug=True, port=34464)
+    app.run(host="192.168.18.84",debug=True, port=34464)
 
 

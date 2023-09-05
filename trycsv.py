@@ -1,11 +1,13 @@
-from flask import jsonify
-import os
-import csv
+from flask import Flask, request, jsonify
 from neo4j import GraphDatabase
-import csv
-from Old_rels import get_node_name
-# from Upload_image import image_upload
-from Node_icons import addNode_icon
+import json
+
+
+# Define your Neo4j connection parameters
+app = Flask(__name__)
+
+
+from neo4j import GraphDatabase
 
 def import_json_to_neo4j(json_data, label, username, password, database, uri):
     driver = GraphDatabase.driver(uri, auth=(username, password))
@@ -17,6 +19,8 @@ def import_json_to_neo4j(json_data, label, username, password, database, uri):
                     f"MERGE (n:{label} {{{properties}}})"
                 )
 
+                print("q", query)
+
                 # Execute the query with parameters
                 session.run(query)
 
@@ -26,6 +30,11 @@ def import_json_to_neo4j(json_data, label, username, password, database, uri):
         return 500
     finally:
         driver.close()
+
+
+
+
+
 
 def data_formating(file_data):
     cleaned_data = []
@@ -39,7 +48,7 @@ def data_formating(file_data):
                 cleaned_key = cleaned_key.replace(char, '_')
             cleaned_dict[cleaned_key] = value
         cleaned_data.append(cleaned_dict)
-
+    print(cleaned_data)
     return cleaned_data
 
 
@@ -47,14 +56,18 @@ def label_format(string):
     special_chars = ['!',"@","#","$","%","^",' ',"&","*","(",")","_","-","=","+","[","{","]","}",";",":","'",'"',",","<",".",">","/","?","\\","|"] 
     for char in special_chars:
         string = string.replace(char, '_')
-
+    print("LABEL;",string)
     return string
 
-def upload_csv(request):
+
+@app.route('/upload_csv_neo', methods=['POST'])
+def upload_csv():
+
 
     try:
         request_data = request.json
         
+
         if "database" in request_data:
             uri = request["URI"]
             username = request["username"]
@@ -74,12 +87,11 @@ def upload_csv(request):
             return jsonify({"error": "No JSON data provided"}), 400
         
         label = label_format(label)
-
+        print("LABEL",label)
         file_data_formated = data_formating(file_data)
         success = import_json_to_neo4j(file_data_formated, label,username,password,database,uri)
         if success == 200:
-            return jsonify({"message": "JSON data inserted successfully in Neo4j"}),get_node_name(uri,username,password,database,label), 200
-            
+            return jsonify({"message": "JSON data inserted successfully in Neo4j"}), 200
         else:
             return jsonify({"error": "Error in Inserting data to Database"}), 400
 
@@ -88,4 +100,6 @@ def upload_csv(request):
 
 
 
+if __name__ == '__main__':
+    app.run(host="192.168.18.84",debug=True, port=34465)
 
