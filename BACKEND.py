@@ -118,11 +118,6 @@ def filternodes():
     if request.method == 'POST':
         response = get_nodes_and_edges()  # Call the function
         return response
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 12536c23420999c17053003962d4510546d2b79b
 
 if __name__ == '__main__':
     app.run(host="192.168.18.95",debug=True, port=34464)
