@@ -2,6 +2,7 @@ from neo4j import GraphDatabase
 from initialGraph import ini_graph
 from limit import remove_extra_nodes
 from Node_icons import get_node_icon
+from TESTING2 import Graph_Data
 
 def get_nodes_and_edges(Data):
     URI = Data['URI']
@@ -22,8 +23,8 @@ def getdata(Request):
             nodes_and_edges=get_nodes_and_edges(Request)
         else:
             nodes_and_edges = ini_graph(Request)
-        if  'limit' in Request  :
-            nodes_and_edges=remove_extra_nodes(nodes_and_edges,Request['limit'])    
+        # if  'limit' in Request  :
+        #     nodes_and_edges=remove_extra_nodes(nodes_and_edges,Request['limit'])    
         
         nodes = nodes_and_edges.get("nodes", [])
         labels = [node.get("label") for node in nodes]
