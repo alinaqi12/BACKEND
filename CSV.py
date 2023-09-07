@@ -7,19 +7,23 @@ from Old_rels import get_node_name
 # from Upload_image import image_upload
 from Node_icons import addNode_icon
 
+
 def import_json_to_neo4j(json_data, label, username, password, database, uri):
     driver = GraphDatabase.driver(uri, auth=(username, password))
+    
     try:
         with driver.session(database=database) as session:
+            tx = session.begin_transaction()
+            
             for data in json_data:
-                properties = ", ".join([f"{key}: '{value}'" for key, value in data.items()])
                 query = (
-                    f"MERGE (n:{label} {{{properties}}})"
+                    f"MERGE (n:{label} $props)"
                 )
-
-                # Execute the query with parameters
-                session.run(query)
-
+                props = {key: value for key, value in data.items()}
+                tx.run(query, props=props)
+                
+            tx.commit()
+            
         return 200
     except Exception as e:
         print("Error:", e)

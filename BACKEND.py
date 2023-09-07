@@ -69,19 +69,18 @@ def getdatabases():
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
-        # print('///',response)
+
         return jsonify(response)
 
 @app.route('/geta', methods=['POST'])
 def getgraph1():
     if request.method=='POST':
         response=Graph_Data(request.get_json())
-        # print('///',response)
+
         return jsonify(response)
 
 @app.route('/upload_csv_neo', methods=['POST'])
 def csv():
-    print("THIS IS THE REQUES FROM FE: ",request)
     response=upload_csv(request)
     return response 
 
@@ -122,6 +121,6 @@ def filternodes():
         return response
 
 if __name__ == '__main__':
-    app.run(host="192.168.18.95",debug=True, port=34464)
+    app.run(host="192.168.18.84",debug=True, port=34464)
 
 
