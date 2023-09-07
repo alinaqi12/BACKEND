@@ -11,37 +11,30 @@ def Graph_Data(data):
         depth = data['depth']
         limit = data['limit']
         Graph_Data={}
-        result1=[]
-        print(data)
+        result=[]
         for i, a in enumerate(Data):
             query=''
             table = a['table']
             properties = a['property']
             propertyvalue = str(a['propertyvalue'])
             if table=="" and properties==False and propertyvalue=="" and database!="":
-                query= f" MATCH (n)  OPTIONAL MATCH (n)-[r]-(relatedNode)   WITH COLLECT(DISTINCT n) AS distinctNodes, COLLECT(DISTINCT relatedNode) AS relatedNodes, r LIMIT {limit} UNWIND r as rel"
+                query= f" MATCH (n) WITH DISTINCT n LIMIT {limit} OPTIONAL MATCH (n)-[r]-(relatedNode)  UNWIND r as rel RETURN COLLECT(DISTINCT n) AS nodes, "+"COLLECT({ source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }) AS edges "
                 # print("NO 1 is executing")
             elif table!="" and properties!=False and propertyvalue!="" and depth!="":
-                query= " match (n:"+f"{table}) "+" optional MATCH (n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+f"]-(relatedNode) "
-                query+=" WITH COLLECT(DISTINCT n) AS distinctNodes, COLLECT(DISTINCT relatedNode) AS relatedNodes, r LIMIT {limit} UNWIND r as rel " 
+                query= " match (n:"+f"{table}) with distinct n  LIMIT {limit}"+" optional MATCH (n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+f"]-(relatedNode) "
+                query+="UNWIND r as rel RETURN COLLECT(DISTINCT n) AS nodes, "+"COLLECT({ source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }) AS edges " 
                 # print("NO 2 is executing")
             elif table!="" and properties==False and propertyvalue=="":
-                query= " match (n:"+f"{table}) "+" OPTIONAL MATCH (n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
-                query+=f"(relatedNode) WITH COLLECT(DISTINCT n) AS distinctNodes, COLLECT(DISTINCT relatedNode) AS relatedNodes, r LIMIT {limit} UNWIND r as rel"
-            returning_query=''' WITH REDUCE(edges = [], rels IN r | 
-            edges + [{ source: ID(startNode(rel)) , target: ID(endNode(rel)), type: type(rel) }]
-            ) AS allEdges, distinctNodes + relatedNodes AS allNodes
-            RETURN { edges: allEdges, nodes: allNodes } AS graphData '''
-            query+=returning_query
+                query= " match (n:"+f"{table}) with distinct n  LIMIT {limit}"+" OPTIONAL MATCH (n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
+                query+=f"(relatedNode) UNWIND r as rel RETURN COLLECT(DISTINCT n) AS nodes, "+"COLLECT({ source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }) AS edges "
+
             print("QUERY IS EXECUTED!!!! ",query)
             with driver.session(database=database) as session:
-                result1.append(session.run(query))
+                result.append(session.run(query).single())
             driver.close()
-            RES=result1[0]
-            for a in RES:
-                print(a)
-        print("I AM RESULT OF QUERY.......",result1)
-        edges,nodes=format_to_edge_node_dict(result1)
+            # print("I AM RESULT OF QUERY.......",result)
+
+        edges,nodes=format_to_edge_node_dict(result)
 
     
         Graph_Data={"nodes":nodes,"edges":edges}
@@ -76,16 +69,21 @@ def format_to_edge_node_dict(result):
                 # Format relationships
                 # print('RESULTS OF EDGES',result1["relationships"])
                 for rel in result1["edges"]:
+                    # print(rel)
                     formatted_edge = {
                         "source": rel['source'],
                         "target": rel['target'],
                         "type": rel['type']
                     }
                     formatted_result["edges"].append(formatted_edge)
-                # print(formatted_result)    
-            return formatted_result["edges"],formatted_result['nodes']
+                    # print(formatted_result)
+            # print(formatted_result['edges'])                
+            # formatted_result["edges"],formatted_result['nodes']
+            formatted_result["nodes"]=remove_duplicate_dicts(formatted_result["nodes"])
+            formatted_result["edges"]=remove_duplicate_dicts(formatted_result['edges'])
+            return formatted_result["edges"],formatted_result["nodes"]
         except Exception as e:
-            print("ERROR Occured",e)
+            print("ERROR Occured")
 
 
 def remove_duplicate_dicts(data):

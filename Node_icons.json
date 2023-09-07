@@ -1,11 +1,11 @@
 [
     {
         "Node": "testing Node",
-        "icon": "ICON"
+        "iconLabel": "ICON"
     },
     {
-        "Node": "good8",
-        "icon": "Photo"
+        "Node": "SIM_Info",
+        "iconLabel": "Flight"
     },
     {
         "Node": "test5",
