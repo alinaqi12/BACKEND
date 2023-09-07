@@ -11,7 +11,7 @@ from CSV import upload_csv
 from FUNC_Jformat import import_jformat_data
 from Reltype import get_relationships
 from ShortestPath import shortest_path
-from existing_node import get_node_labels
+from existing_node import get_existing_nodes_or_delete
 #from Upload_image import image_upload
 from TESTING2 import Graph_Data
 from CreateD_BDeleteDB  import manage_database
@@ -92,7 +92,7 @@ def json():
 
 @app.route('/get_existing_nodes', methods=['POST'])
 def existingnode():
-    response=get_node_labels(request)
+    response=get_existing_nodes_or_delete(request)
     return response
 
 @app.route('/shortestpath', methods=['POST'])
