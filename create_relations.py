@@ -33,11 +33,11 @@ def relation(driver,targets,database,single_node=0,add_del='add',relations='mult
                             # f"WHERE source.{a['Source_property']} IS NOT NULL "  # Use 'IS NOT NULL' instead of 'exists()'
                             f"MATCH (target:{a['target']}) "
                             # f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "
-                            f" (source)-[r:{a['relationship']}]->(target) "
+                            f" (source)-[r:{a['relationship']}]-(target) "
                             " delete r RETURN source;")
                     #################### deleting 1 specific relation between two specific nodes
                     if relations=='single':
-                        query=f"MATCH (source:{a['source']} {{{a['Source_property']}: '{a['Source_property_value']}'}}) "+f" WHERE source.{a['Source_property']} IS NOT NULL "+f"MATCH (target:{a['target']}) "+f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "+f" match (source)-[r:{a['relationship']}]->(target) "+" delete r RETURN source;"
+                        query=f"MATCH (source:{a['source']} {{{a['Source_property']}: '{a['Source_property_value']}'}}) "+f" WHERE source.{a['Source_property']} IS NOT NULL "+f"MATCH (target:{a['target']}) "+f"WHERE target.{a['Target_property']} = source.{a['Source_property']} "+f" match (source)-[r:{a['relationship']}]-(target) "+" delete r RETURN source;"
                     with driver.session(database=database) as session:
                         response=session.run(query)
                         print("i AM executing",query)
@@ -52,10 +52,10 @@ def relation(driver,targets,database,single_node=0,add_del='add',relations='mult
             if add_del=='del':
                 ################## deleting a specific single relation between all nodes 
                 if relations=='single':
-                    query=f"MATCH (source:{a['source']}) "+f"MATCH (target:{a['target']}) "+f" match (source)-[r:{a['relationship']}]->(target) "+" delete r RETURN source;"
+                    query=f"MATCH (source:{a['source']}) "+f"MATCH (target:{a['target']}) "+f" match (source)-[r:{a['relationship']}]-(target) "+" delete r RETURN source;"
                 ################## deleting all relations between all specific nodes.. means deleting all relations on all nodes but nodes will be chosen on a condition like same CNIC or other identifier 
                 if relations=='multiple':
-                    query=f"MATCH (source:{a['source']}) "+f"MATCH (target:{a['target']}) "+f" match (source)-[r:{a['relationship']}]->(target) "+" delete r RETURN source;"                    
+                    query=f"MATCH (source:{a['source']}) "+f"MATCH (target:{a['target']}) "+f" match (source)-[r:{a['relationship']}]-(target) "+" delete r RETURN source;"                    
                     print(query)
             with driver.session(database=database) as session:
                 response=session.run(query)
