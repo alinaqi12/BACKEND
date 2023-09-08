@@ -13,7 +13,7 @@ from Reltype import get_relationships
 from ShortestPath import shortest_path
 from existing_node import get_existing_nodes_or_delete
 #from Upload_image import image_upload
-from TESTING2 import Graph_Data
+# from TESTING2 import Graph_Data
 from CreateD_BDeleteDB  import manage_database
 from Filters4 import get_nodes_and_edges
 
@@ -69,16 +69,17 @@ def getdatabases():
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
+        
         # response=Graph_Data(request.get_json())
         
         return jsonify(response)
 
-@app.route('/geta', methods=['POST'])
-def getgraph1():
-    if request.method=='POST':
-        response=Graph_Data(request.get_json())
+# @app.route('/geta', methods=['POST'])
+# def getgraph1():
+#     if request.method=='POST':
+#         response=Graph_Data(request.get_json())
 
-        return jsonify(response)
+#         return jsonify(response)
 
 @app.route('/upload_csv_neo', methods=['POST'])
 def csv():

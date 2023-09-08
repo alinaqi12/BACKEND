@@ -2,7 +2,7 @@ from neo4j import GraphDatabase
 from initialGraph import ini_graph
 from limit import remove_extra_nodes
 from Node_icons import get_node_icon
-from TESTING2 import Graph_Data
+# from TESTING2 import Graph_Data
 
 def get_nodes_and_edges(data):
     URI = data['URI']
