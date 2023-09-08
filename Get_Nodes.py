@@ -16,29 +16,24 @@ def get_child_nodes(session, node_id):
     
     return child_nodes
 
-def get_node_and_child_nodes(session,Data):
+def get_node_and_child_nodes(session,data):
+    for Data in data:
+        field=Data['field']
+        field_value=Data['field_value']
 
-    table=Data['table']
-    field=Data['field']
-    field_value=Data['field_value']
-    if field=='node_id':
-        query=f"MATCH (a) where id(a)={field_value}  "+"RETURN a"
-        result = session.run(query)
-        s= result.single()
-        Parent=s['a']
-        node_id=field_value
-    else:
-        query =f"MATCH (a:{table} {{{field}:'{field_value}'}})  "+"RETURN id(a) as nodeID,a"
-        result = session.run(query)
-        s= result.single()
-        node_id = s['nodeID']
-        Parent=s['a']
-    #print(Parent)
-    #print("Node ID:", node_id)
-    try:
-        child_nodes =get_child_nodes(session, node_id)
-    except :
-        print("No child elements! ")
+        if field=='node_id':
+            query=f"MATCH (a) where id(a)={field_value}  "+"RETURN a"
+            result = session.run(query)
+            s= result.single()
+            Parent=s['a']
+            node_id=field_value
+
+        try:
+            child_nodes =get_child_nodes(session, node_id)
+        except :
+            print("No child elements! ")
+    Parent.append(Parent)
+    child_nodes.append(child_nodes)
     return Parent, child_nodes
 
 def close(session,neo4j_driver):

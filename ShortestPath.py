@@ -2,6 +2,7 @@ from itertools import permutations
 from neo4j import GraphDatabase
 import ast
 from flask import Flask, request, jsonify
+from Node_icons import get_node_icon
 
 '''
 Request from API input body json e.g:
@@ -49,7 +50,7 @@ Request from API input body json e.g:
             "table": "Person",
             "property": "CNIC",
             "propertyvalue": "2554464646"
-        }
+}
     ],
     "depth": "0",
     "limit": "140"
@@ -79,7 +80,7 @@ def create_edge_data(linked_graph):
 def find_shortest_paths_by_ids(uri, user, password, data,database):
     with GraphDatabase.driver(uri, auth=(user, password)) as driver:
         linked_graphs = []
-
+        
         for perm in permutations(data):
             match_clauses = []
 
@@ -92,21 +93,21 @@ def find_shortest_paths_by_ids(uri, user, password, data,database):
             node_names = ", ".join([f"node{i}" for i in range(len(perm))])
 
             match_paths = " ".join([f"OPTIONAL MATCH p{i} = shortestPath((node{i})-[*]-(node{i+1}))" for i in range(len(perm)-1)])
-
+            
             query = f"""
             MATCH {match_clause}
             WITH {node_names} ORDER BY id(node0)
             {match_paths}
             RETURN {", ".join([f"p{i}" for i in range(len(perm)-1)])};
             """
-
+            
             with driver.session(database=database) as session:
                 result = session.run(query)
                 if result.peek() is not None:
                     linked_graphs.append(result.graph())
 
         return linked_graphs
-
+            
 def find_shortest_paths_by_properties(uri, user, password, data,database):
     with GraphDatabase.driver(uri, auth=(user, password)) as driver:
         linked_graphs = []
@@ -281,6 +282,12 @@ def shortest_path(request):
         "nodes": nodes
     }
     
+
+    nodes = result.get("nodes", [])
+    labels = [node.get("label") for node in nodes]
+    icons= get_node_icon(list(set(labels)))
+    result['iconLabels']=icons
+
     if any("node_id" in item for item in data):
         newResult = Remove_given_nodes_id(result, input_data,database)
 

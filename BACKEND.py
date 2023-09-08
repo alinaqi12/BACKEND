@@ -69,7 +69,8 @@ def getdatabases():
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
-
+        # response=Graph_Data(request.get_json())
+        
         return jsonify(response)
 
 @app.route('/geta', methods=['POST'])
@@ -97,6 +98,7 @@ def existingnode():
 
 @app.route('/shortestpath', methods=['POST'])
 def get_shortestpath():
+    print("I am HEREE")
     if request.method=="POST":
         reponse=shortest_path(request)
         return jsonify(reponse)
@@ -121,6 +123,6 @@ def filternodes():
         return response
 
 if __name__ == '__main__':
-    app.run(host="192.168.18.84",debug=True, port=34464)
+    app.run(host="192.168.18.95",debug=True, port=34464)
 
 

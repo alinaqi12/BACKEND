@@ -10,34 +10,41 @@ def Graph_Data(data):
         Data=list(data['Data'])
         depth = data['depth']
         limit = data['limit']
+        edges=[]
+        nodes=[]
         Graph_Data={}
-        result=[]
         for i, a in enumerate(Data):
             query=''
             table = a['table']
             properties = a['property']
             propertyvalue = str(a['propertyvalue'])
             if table=="" and properties==False and propertyvalue=="" and database!="":
-                query= f" MATCH (n) WITH DISTINCT n LIMIT {limit} OPTIONAL MATCH (n)-[r]-(relatedNode)  UNWIND r as rel RETURN COLLECT(DISTINCT n) AS nodes, "+"COLLECT({ source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }) AS edges "
+                query= f" MATCH (n) WITH DISTINCT n LIMIT {limit} OPTIONAL MATCH path=(n)-[r]-(relatedNode)  with n,r,path {limit}  RETURN path,r"
                 # print("NO 1 is executing")
             elif table!="" and properties!=False and propertyvalue!="" and depth!="":
-                query= " match (n:"+f"{table}) with distinct n  LIMIT {limit}"+" optional MATCH (n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+f"]-(relatedNode) "
-                query+="UNWIND r as rel RETURN COLLECT(DISTINCT n) AS nodes, "+"COLLECT({ source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }) AS edges " 
+                query= " match (n:"+f"{table}) with distinct n "+" optional MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+f"]-(relatedNode) "
+                query+=f"  with n,r,path {limit} RETURN path,r" 
                 # print("NO 2 is executing")
             elif table!="" and properties==False and propertyvalue=="":
-                query= " match (n:"+f"{table}) with distinct n  LIMIT {limit}"+" OPTIONAL MATCH (n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
-                query+=f"(relatedNode) UNWIND r as rel RETURN COLLECT(DISTINCT n) AS nodes, "+"COLLECT({ source: ID(startNode(rel)), target: ID(endNode(rel)), type: type(rel) }) AS edges "
+                query= " match (n:"+f"{table}) with distinct n  "+" OPTIONAL MATCH path=(n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
+                query+=f"(relatedNode)  with n,r,path {limit}  RETURN path,r"
 
-            print("QUERY IS EXECUTED!!!! ",query)
+            # query=" match (n:Person) with distinct n  OPTIONAL MATCH path=(n:Person)-[r*0..3]-(relatedNode) with n,r,path limit 15 RETURN path,r"
+            # print("QUERY IS EXECUTED!!!! ",query)
+            # with driver.session(database=database) as session:
+            #     result.append(session.run(query).single())
             with driver.session(database=database) as session:
-                result.append(session.run(query).single())
+                # result.append(session.run(query).single())
+                print(query)
+                result=list(session.run(query))
+
             driver.close()
             # print("I AM RESULT OF QUERY.......",result)
+            edges1,nodes1=format_to_edge_node_dict(result)
+            edges.append(edges1)
+            nodes.append(nodes1)
 
-        edges,nodes=format_to_edge_node_dict(result)
-
-    
-        Graph_Data={"nodes":nodes,"edges":edges}
+        Graph_Data={"nodes":nodes[0],"edges":edges[0]}
         return Graph_Data
         
     except Exception as e:
@@ -45,45 +52,72 @@ def Graph_Data(data):
     
     
 def format_to_edge_node_dict(result):
+        
         formatted_result={"nodes":[],"edges":[]}
         if result is None:
             return jsonify({'error': 'No data found'})
+
         try:
-            for result1 in result:
-                for node in result1["nodes"]:
-                    node_id= node.element_id
-                    last_colon_index = node_id.rfind(":")  # Find the last occurrence of ":"
+            for resul in result:
+                # print('//////',resul,'/////////////')
+                # resul=result[len(result)-1]
+                for res in resul :
+                    # print(res)
+                    try:
+                        for aaa in res.nodes:
+                            # print("I am What you looking for .... ",aaa,'////', type(aaa))
+                            node=aaa
+                            node_id= node.element_id
+                            last_colon_index = node_id.rfind(":")  # Find the last occurrence of ":"
 
-                    if last_colon_index != -1:
-                        node_id1 = node_id[last_colon_index + 1:]  # Slice the string after the last ":"
-                        
-                    # print(node_id1)
-                    formatted_node = {
-                        "id":node_id1,
-                        "label": list(node.labels)[0],  # Assuming a node has only one label
-                        "properties": dict(node)
-                    }
+                            if last_colon_index != -1:
+                                node_id1 = node_id[last_colon_index + 1:]  # Slice the string after the last ":"
+                                
+                            # print(node_id1)
+                            formatted_node = {
+                                "id":node_id1,
+                                "label": list(node.labels)[0],  # Assuming a node has only one label
+                                "properties": dict(node)
+                            }
+                            formatted_result["nodes"].append(formatted_node)
+                    except:
+                        for aa in res:
+                            # print("I am What you looking for LISTSTS .... ",aa.nodes,'////', type(aa))
 
-                    formatted_result["nodes"].append(formatted_node)
-                # print(formatted_node)
-                # Format relationships
-                # print('RESULTS OF EDGES',result1["relationships"])
-                for rel in result1["edges"]:
-                    # print(rel)
-                    formatted_edge = {
-                        "source": rel['source'],
-                        "target": rel['target'],
-                        "type": rel['type']
-                    }
-                    formatted_result["edges"].append(formatted_edge)
-                    # print(formatted_result)
-            # print(formatted_result['edges'])                
-            # formatted_result["edges"],formatted_result['nodes']
+                            # print("I am What you looking for LISTSTS LASTTT.... ",aa.element_id,'////', type(aa))
+                            node_id=aa.nodes[0].element_id
+                            src = node_id.rfind(":")  # Find the last occurrence of ":"
+
+                            if src != -1:
+                                source = node_id[src + 1:]  # Slice the string after the last ":"
+                            
+                            node_id=aa.nodes[1].element_id
+                            trg = node_id.rfind(":")  # Find the last occurrence of ":"
+                            if trg != -1:
+                                target = node_id[trg + 1:]  # Slice the string after the last ":"
+                                
+                            # print("Source ID.... ",source,'///', aa.type)
+                            # print("Target ID ",target,'//////','/////////////////////////', aa.type)
+                            formatted_edge = {
+                            
+                                "source": source,
+                                "target": target,
+                                "type": aa.type
+                            }
+                            # print("HELLO WORLD",formatted_edge)
+                            formatted_result["edges"].append(formatted_edge)
+                                    # print(formatted_result)
+                            # print(formatted_result['edges'])                
+                            # formatted_result["edges"],formatted_result['nodes']
+                            # print('_________________________________________________________________________________')
             formatted_result["nodes"]=remove_duplicate_dicts(formatted_result["nodes"])
             formatted_result["edges"]=remove_duplicate_dicts(formatted_result['edges'])
+
+            # print(formatted_result["edges"])
             return formatted_result["edges"],formatted_result["nodes"]
+
         except Exception as e:
-            print("ERROR Occured")
+            print("ERROR Occured",e)
 
 
 def remove_duplicate_dicts(data):
