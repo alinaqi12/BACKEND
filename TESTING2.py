@@ -2,7 +2,7 @@ from flask import jsonify
 from neo4j import GraphDatabase
 import json
 
-def Graph_Data(data):
+def ini_graph(data):
     try:
         URI = data['URI']
         driver = GraphDatabase.driver(URI, auth=(data['username'], data['password']))
@@ -19,27 +19,23 @@ def Graph_Data(data):
             properties = a['property']
             propertyvalue = str(a['propertyvalue'])
             if table=="" and properties==False and propertyvalue=="" and database!="":
-                query= f" MATCH (n) WITH DISTINCT n LIMIT {limit} OPTIONAL MATCH path=(n)-[r]-(relatedNode)  with n,r,path {limit}  RETURN path,r"
-                # print("NO 1 is executing")
+                query= f" MATCH (n) WITH DISTINCT n  OPTIONAL MATCH path=(n)-[r]-(relatedNode)  with n,r,path limit {limit}  RETURN path,r"
+
             elif table!="" and properties!=False and propertyvalue!="" and depth!="":
-                query= " match (n:"+f"{table}) with distinct n "+" optional MATCH path=(n:"+ f"{table}" + '{'+ f"{properties} :"+ f'"{propertyvalue}"'+"})-"+f"[r*0.."+f"{depth}"+f"]-(relatedNode) "
-                query+=f"  with n,r,path {limit} RETURN path,r" 
-                # print("NO 2 is executing")
+                query= f"match (n:{table}"+ "{"  + f"{properties} : '{propertyvalue}'"+"}"+ " ) with distinct n "+" optional MATCH path=(n:"+ f"{table}" +f")-[r*0.."+f"{depth}"+f"]-(relatedNode) "
+                query+=f"  with n,r,path limit {limit} RETURN path,r" 
+
             elif table!="" and properties==False and propertyvalue=="":
                 query= " match (n:"+f"{table}) with distinct n  "+" OPTIONAL MATCH path=(n:"+ f"{table}" +")-"+f"[r*0.."+f"{depth}"+"]-"
-                query+=f"(relatedNode)  with n,r,path {limit}  RETURN path,r"
+                query+=f"(relatedNode)  with n,r,path limit {limit}  RETURN path,r"
 
-            # query=" match (n:Person) with distinct n  OPTIONAL MATCH path=(n:Person)-[r*0..3]-(relatedNode) with n,r,path limit 15 RETURN path,r"
-            # print("QUERY IS EXECUTED!!!! ",query)
-            # with driver.session(database=database) as session:
-            #     result.append(session.run(query).single())
             with driver.session(database=database) as session:
-                # result.append(session.run(query).single())
+
                 print(query)
                 result=list(session.run(query))
 
             driver.close()
-            # print("I AM RESULT OF QUERY.......",result)
+
             edges1,nodes1=format_to_edge_node_dict(result)
             edges.append(edges1)
             nodes.append(nodes1)
@@ -54,14 +50,13 @@ def Graph_Data(data):
 def format_to_edge_node_dict(result):
         
         formatted_result={"nodes":[],"edges":[]}
-        if result is None:
-            return jsonify({'error': 'No data found'})
-
         try:
             for resul in result:
                 # print('//////',resul,'/////////////')
                 # resul=result[len(result)-1]
+                # print(resul)
                 for res in resul :
+                    # print("WUHU RESULT IS HERE....",res)
                     # print(res)
                     try:
                         for aaa in res.nodes:

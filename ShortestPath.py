@@ -4,6 +4,7 @@ import ast
 from flask import Flask, request, jsonify
 from Node_icons import get_node_icon
 
+
 '''
 Request from API input body json e.g:
 
@@ -57,6 +58,7 @@ Request from API input body json e.g:
 }
 
 '''
+
 
 def create_node_data(node, labels, properties):
     node_data = {
