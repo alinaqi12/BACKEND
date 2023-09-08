@@ -91,14 +91,9 @@ def upload_csv(request):
         success = import_json_to_neo4j(file_data_formated, label,username,password,database,uri)
         
         if success == 200:
-<<<<<<< HEAD
-            rel = get_node_name(uri,username,password,database,label)
-            return jsonify({"message": "JSON data inserted successfully in Neo4j"},rel), 200
-=======
             rett = get_node_name(uri,username,password,database,label)
             ret = "JSON data inserted successfully in Neo4j" + rett
             return jsonify({"message": ret}),200
->>>>>>> 6ac3bf65d29607d81d121cf5c5259012cbf2f1a1
             
         else:
             return jsonify({"error": "Error in Inserting data to Database"}), 400
