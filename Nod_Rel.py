@@ -4,20 +4,31 @@ from limit import remove_extra_nodes
 from Node_icons import get_node_icon
 from TESTING2 import Graph_Data
 
-def get_nodes_and_edges(Data):
-    URI = Data['URI']
-    driver = GraphDatabase.driver(URI, auth=(Data['username'], Data['password']))
-    database = Data['database']
-    if Data['node_id']:
-        query = f'MATCH (n) where ID(n)={Data["node_id"]} '+"OPTIONAL MATCH (n)-[r]-(relatedNode) WITH collect(DISTINCT n) + collect(DISTINCT relatedNode) AS allNodes, collect(DISTINCT r) AS allRels RETURN { nodes: [node IN allNodes | {id: id(node), label: labels(node)[0], properties: properties(node)}], edges: [rel IN allRels | {source: id(startNode(rel)), target: id(endNode(rel)), type: type(rel)}]} AS graphData;"    
-        with driver.session(database=database) as session:
-            result = session.run(query).single()["graphData"]
-        driver.close()
-        return result
-    else:
-        return "Error Please Define Node ID"
+def get_nodes_and_edges(data):
+    URI = data['URI']
+    driver = GraphDatabase.driver(URI, auth=(data['username'], data['password']))
+    database = data['database']
+    result={"edges":[],"nodes":[]}
+    # print(data['node_id'])
+    with driver.session(database=database) as session:
+        try:
+            for Data in data['node_id']:
+                query = f'MATCH (n) where ID(n)={Data} '+"OPTIONAL MATCH (n)-[r]-(relatedNode) WITH collect(DISTINCT n) + collect(DISTINCT relatedNode) AS allNodes, collect(DISTINCT r) AS allRels RETURN { nodes: [node IN allNodes | {id: id(node), label: labels(node)[0], properties: properties(node)}], edges: [rel IN allRels | {source: id(startNode(rel)), target: id(endNode(rel)), type: type(rel)}]} AS graphData;"
+                result1 = session.run(query).single()["graphData"]
+                # print(query)
+                for a in result1['edges']:
+                    result['edges'].append(a)
+                for a in result1['nodes']:    
+                    result['nodes'].append(a)
+
+            driver.close()
+            return result
     
+        except Exception as e:
+            print('error occured ', e)
+
 def getdata(Request):
+    print(Request)
     try:
         if 'node_id' in Request:
             nodes_and_edges=get_nodes_and_edges(Request)

@@ -14,16 +14,17 @@ def import_json_to_neo4j(json_data, label, username, password, database, uri):
     try:
         with driver.session(database=database) as session:
             tx = session.begin_transaction()
-            
+
             for data in json_data:
+                label = "CDR_faster"  # You should specify the label separately
                 query = (
                     f"MERGE (n:{label} $props)"
                 )
-                props = {key: value for key, value in data.items()}
+                props = data  # No need to create a new dictionary here
                 tx.run(query, props=props)
-                
-            tx.commit()
-            
+
+            tx.commit()     
+
         return 200
     except Exception as e:
         print("Error:", e)
