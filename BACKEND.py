@@ -98,6 +98,7 @@ def existingnode():
 
 @app.route('/shortestpath', methods=['POST'])
 def get_shortestpath():
+    print("I am HEREE")
     if request.method=="POST":
         reponse=shortest_path(request)
         return jsonify(reponse)

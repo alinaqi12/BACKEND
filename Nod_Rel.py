@@ -15,15 +15,12 @@ def get_nodes_and_edges(data):
             for Data in data['node_id']:
                 query = f'MATCH (n) where ID(n)={Data} '+"OPTIONAL MATCH (n)-[r]-(relatedNode) WITH collect(DISTINCT n) + collect(DISTINCT relatedNode) AS allNodes, collect(DISTINCT r) AS allRels RETURN { nodes: [node IN allNodes | {id: id(node), label: labels(node)[0], properties: properties(node)}], edges: [rel IN allRels | {source: id(startNode(rel)), target: id(endNode(rel)), type: type(rel)}]} AS graphData;"
                 result1 = session.run(query).single()["graphData"]
-                # print(query)
                 for a in result1['edges']:
                     result['edges'].append(a)
                 for a in result1['nodes']:    
                     result['nodes'].append(a)
-
             driver.close()
             return result
-    
         except Exception as e:
             print('error occured ', e)
 
