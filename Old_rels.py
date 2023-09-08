@@ -86,13 +86,12 @@ def get_node_name(uri,username,password,database,node_name):
 
         # Close the Neo4j driver
         driver.close()
-        success_response ={'message': 'Successfully added the old relation to new if exist'}
+        success_response ="Successfully added the old relation to new if exist"
         return success_response
 
 
     except Exception as e:
-        error_response = {
-            'error': 'An error occurred',
-            'details': str(e)
-        }
+        e = str(e)
+        error_response =  f'An error occurred'+'details = {e}'
+        
         return error_response

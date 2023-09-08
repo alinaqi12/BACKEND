@@ -44,11 +44,23 @@ def data_formating(file_data):
 
 
 def label_format(string):
-    special_chars = ['!',"@","#","$","%","^",' ',"&","*","(",")","_","-","=","+","[","{","]","}",";",":","'",'"',",","<",".",">","/","?","\\","|"] 
+    special_chars = ['!', "@", "#", "$", "%", "^", ' ', "&", "*", "(", ")", "_", "-", "=", "+", "[", "{", "]", "}", ";", ":", "'", '"', ",", "<", ".", ">", "/", "?", "\\", "|"]
     for char in special_chars:
         string = string.replace(char, '_')
 
+    # Check if the string starts with a number
+    if string and string[0].isdigit():
+        # Find the index of the first non-digit character
+        index = 0
+        while index < len(string) and string[index].isdigit():
+            index += 1
+
+        # Extract the leading digits and move them to the end
+        digits = string[:index]
+        string = string[index:] + digits
+
     return string
+
 
 def upload_csv(request):
 
@@ -78,9 +90,9 @@ def upload_csv(request):
         file_data_formated = data_formating(file_data)
         success = import_json_to_neo4j(file_data_formated, label,username,password,database,uri)
         if success == 200:
-            get_node_name(uri,username,password,database,label)
-            
-            return jsonify({"message": "JSON data inserted successfully in Neo4j"})
+            rett = get_node_name(uri,username,password,database,label)
+            ret = "JSON data inserted successfully in Neo4j" + rett
+            return jsonify({"message": ret}),200
             
         else:
             return jsonify({"error": "Error in Inserting data to Database"}), 400
