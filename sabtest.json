@@ -1,74 +1,26 @@
 [
-    <Record 
-        path=<Path 
-            start=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-                > 
-            
-            end=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-                > 
-        size=0>
-    >, 
-    <Record 
-        path=<Path start=<Node element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' labels=frozenset({'Person'}) properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}> 
-        end=<Node element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:628' labels=frozenset({'TAX_PAYER'}) properties={'Person_address': 'address 90', 'Date_of_birth': '1941-09-27', 'CNIC': '98765432', 'Person_Name': 'Jane Doe'}> 
-        size=1>
-    >
+    {'endNode': {'case_detail': 'Homicide', 'time_of_fir': '2019-08-20 12: 41: 03', 'no_of_suspects': '4', 'progress': 'pending', 'case_number': 'nBKE9', 'police_station_numbers': '25321228'
+        }, 'rel': [({'case_detail': 'Homicide', 'time_of_fir': '2019-08-20 12: 41: 03', 'no_of_suspects': '4', 'progress': 'pending', 'case_number': 'nBKE9', 'police_station_numbers': '25321228'
+            }, 'CASES',
+            {})
+        ]
+    },
+    {'endNode': {'First_Name': 'Mikayla', 'Profession': 'Social research officer, government', 'Date_of_Birth': '1953-12-31', 'Last_Name': 'George', 'Father_Name': 'William Hardy', 'Location_Coordinates_Y': '70.18686913847512', 'CNIC': '94841559691', 'Location_Coordinates_X': '24.125604855266506', 'City': 'Lake Beth', 'Gender': 'Male', 'Age': '43'
+        }, 'rel': [({'First_Name': 'Mikayla', 'Profession': 'Social research officer, government', 'Date_of_Birth': '1953-12-31', 'Last_Name': 'George', 'Father_Name': 'William Hardy', 'Location_Coordinates_Y': '70.18686913847512', 'CNIC': '94841559691', 'Location_Coordinates_X': '24.125604855266506', 'City': 'Lake Beth', 'Gender': 'Male', 'Age': '43'
+            }, 'HAS_CASE',
+            {})
+        ]
+    }
 ]
-/////////////////////
-
-[
-    <Record 
-        path=<Path 
-            start=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-            > 
-            end=<Node
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-            > 
-                size=0
-        > 
-                r=[]
-    >
-                , 
-    <Record 
-        path=<Path 
-            start=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-            > 
-            end=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:628' 
-                labels=frozenset({'TAX_PAYER'}) 
-                properties={'Person_address': 'address 90', 'Date_of_birth': '1941-09-27', 'CNIC': '98765432', 'Person_Name': 'Jane Doe'}
-                > 
-                size=1> 
-                r=[<Relationship 
-                    element_id='5:3961124c-ce2b-4ba2-89e1-a992f5adea4b:1086' 
-                    nodes=(
-                        <Node 
-                            element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                            labels=frozenset({'Person'}) 
-                            properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-                        >, 
-                        <Node 
-                            element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:628' 
-                            labels=frozenset({'TAX_PAYER'}) 
-                            properties={'Person_address': 'address 90', 'Date_of_birth': '1941-09-27', 'CNIC': '98765432', 'Person_Name': 'Jane Doe'}
-                            >
-                        ) 
-                    type='TAX_PAYER' 
-                    properties={}
-                >]
-        >
+[({'case_detail': 'Homicide', 'time_of_fir': '2019-08-20 12: 41: 03', 'no_of_suspects': '4', 'progress': 'pending', 'case_number': 'nBKE9', 'police_station_numbers': '25321228'
+    },
+    [({'case_detail': 'Homicide', 'time_of_fir': '2019-08-20 12: 41: 03', 'no_of_suspects': '4', 'progress': 'pending', 'case_number': 'nBKE9', 'police_station_numbers': '25321228'
+        }, 'CASES',
+        {})
+    ]), ({'First_Name': 'Mikayla', 'Profession': 'Social research officer, government', 'Date_of_Birth': '1953-12-31', 'Last_Name': 'George', 'Father_Name': 'William Hardy', 'Location_Coordinates_Y': '70.18686913847512', 'CNIC': '94841559691', 'Location_Coordinates_X': '24.125604855266506', 'City': 'Lake Beth', 'Gender': 'Male', 'Age': '43'
+    },
+    [({'First_Name': 'Mikayla', 'Profession': 'Social research officer, government', 'Date_of_Birth': '1953-12-31', 'Last_Name': 'George', 'Father_Name': 'William Hardy', 'Location_Coordinates_Y': '70.18686913847512', 'CNIC': '94841559691', 'Location_Coordinates_X': '24.125604855266506', 'City': 'Lake Beth', 'Gender': 'Male', 'Age': '43'
+        }, 'HAS_CASE',
+        {})
+    ])
 ]

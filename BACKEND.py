@@ -1,4 +1,6 @@
-from flask import Flask, jsonify,request
+from flask import Flask
+from flask import jsonify
+from flask import request
 from SQL_to_NEO4j import add_data_source
 from Get_Nodes import Get_Nodes_Data
 from create_relations import get_values
@@ -13,7 +15,7 @@ from Reltype import get_relationships
 from ShortestPath import shortest_path
 from existing_node import get_existing_nodes_or_delete
 #from Upload_image import image_upload
-# from TESTING2 import Graph_Data
+from TESTING2 import ini_graph
 from CreateD_BDeleteDB  import manage_database
 from Filters4 import get_nodes_and_edges
 
@@ -63,23 +65,23 @@ def getbyquery():
 def getdatabases():
     if request.method=='GET':
         response=GET_DATABASE()
-        return jsonify(response)
+        filtered_response = [entry for entry in response if entry.get('Database') != 'system']
+        return jsonify(filtered_response)
 
 @app.route('/getdata', methods=['POST'])
 def getgraph():
     if request.method=='POST':
         response=getdata(request.get_json())
         
-        # response=Graph_Data(request.get_json())
+        #response=ini_graph(request.get_json())
         
         return jsonify(response)
 
-# @app.route('/geta', methods=['POST'])
-# def getgraph1():
-#     if request.method=='POST':
-#         response=Graph_Data(request.get_json())
-
-#         return jsonify(response)
+@app.route('/geta', methods=['POST'])
+def getgraph1():
+    if request.method=='POST':
+        response=Graph_Data(request.get_json())
+        return jsonify(response)
 
 @app.route('/upload_csv_neo', methods=['POST'])
 def csv():
@@ -94,6 +96,7 @@ def json():
 
 @app.route('/get_existing_nodes', methods=['POST'])
 def existingnode():
+    print(request)
     response=get_existing_nodes_or_delete(request)
     return response
 
@@ -124,6 +127,6 @@ def filternodes():
         return response
 
 if __name__ == '__main__':
-    app.run(host="192.168.18.95",debug=True, port=34464)
+    app.run(host="192.168.18.84",debug=True, port=34464)
 
 
