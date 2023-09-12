@@ -1,74 +1,133 @@
-[
-    <Record 
-        path=<Path 
-            start=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-                > 
-            
-            end=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-                > 
-        size=0>
-    >, 
-    <Record 
-        path=<Path start=<Node element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' labels=frozenset({'Person'}) properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}> 
-        end=<Node element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:628' labels=frozenset({'TAX_PAYER'}) properties={'Person_address': 'address 90', 'Date_of_birth': '1941-09-27', 'CNIC': '98765432', 'Person_Name': 'Jane Doe'}> 
-        size=1>
-    >
-]
-/////////////////////
-
-[
-    <Record 
-        path=<Path 
-            start=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-            > 
-            end=<Node
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-            > 
-                size=0
-        > 
-                r=[]
-    >
-                , 
-    <Record 
-        path=<Path 
-            start=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                labels=frozenset({'Person'}) 
-                properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-            > 
-            end=<Node 
-                element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:628' 
-                labels=frozenset({'TAX_PAYER'}) 
-                properties={'Person_address': 'address 90', 'Date_of_birth': '1941-09-27', 'CNIC': '98765432', 'Person_Name': 'Jane Doe'}
-                > 
-                size=1> 
-                r=[<Relationship 
-                    element_id='5:3961124c-ce2b-4ba2-89e1-a992f5adea4b:1086' 
-                    nodes=(
-                        <Node 
-                            element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:546' 
-                            labels=frozenset({'Person'}) 
-                            properties={'current_address': 'address 90', 'marital_status': 'single', 'gender': 'Female', 'father_name': 'John Doe', 'date_of_birth': '1941-09-27', 'mother_name': 'Mary Doe', 'last_name': 'Doe', 'CNIC': '98765432', 'permanent_address': 'address 90', 'husband_name': 'None', 'first_name': 'Jane', 'religion': 'christian'}
-                        >, 
-                        <Node 
-                            element_id='4:3961124c-ce2b-4ba2-89e1-a992f5adea4b:628' 
-                            labels=frozenset({'TAX_PAYER'}) 
-                            properties={'Person_address': 'address 90', 'Date_of_birth': '1941-09-27', 'CNIC': '98765432', 'Person_Name': 'Jane Doe'}
-                            >
-                        ) 
-                    type='TAX_PAYER' 
-                    properties={}
-                >]
-        >
-]
+{
+    "edges": [
+        {
+            "source": 30018,
+            "target": 69136,
+            "type": "HAS_CASE"
+        },
+        {
+            "source": 30018,
+            "target": 75478,
+            "type": "HAS_CASE"
+        },
+        {
+            "source": 30018,
+            "target": 57064,
+            "type": "HAS_CASE"
+        },
+        {
+            "source": 30018,
+            "target": 64541,
+            "type": "HAS_CASE"
+        },
+        {
+            "source": 30018,
+            "target": 58437,
+            "type": "HAS_CASE"
+        },
+        {
+            "source": 30018,
+            "target": 69256,
+            "type": "HAS_CASE"
+        },
+        {
+            "source": 30018,
+            "target": 35019,
+            "type": "HAS_PASSPORT"
+        },
+        {
+            "source": 30018,
+            "target": 20033,
+            "type": "HAS_NUMBER"
+        },
+        {
+            "source": 30018,
+            "target": 20034,
+            "type": "HAS_NUMBER"
+        }
+    ],
+    "nodes": [
+        {
+            "id": 69136,
+            "label": "REPORT",
+            "properties": {
+                "case_number": "RTnuc",
+                "status": "closed",
+                "suspect": "94841559691"
+            }
+        },
+        {
+            "id": 75478,
+            "label": "REPORT",
+            "properties": {
+                "case_number": "rnqVB",
+                "status": "closed",
+                "suspect": "94841559691"
+            }
+        },
+        {
+            "id": 57064,
+            "label": "REPORT",
+            "properties": {
+                "case_number": "aUk0S",
+                "status": "closed",
+                "suspect": "94841559691"
+            }
+        },
+        {
+            "id": 64541,
+            "label": "REPORT",
+            "properties": {
+                "case_number": "1DzAC",
+                "status": "closed",
+                "suspect": "94841559691"
+            }
+        },
+        {
+            "id": 58437,
+            "label": "REPORT",
+            "properties": {
+                "case_number": "bDIRv",
+                "status": "pending",
+                "suspect": "94841559691"
+            }
+        },
+        {
+            "id": 69256,
+            "label": "REPORT",
+            "properties": {
+                "case_number": "nBKE9",
+                "status": "pending",
+                "suspect": "94841559691"
+            }
+        },
+        {
+            "id": 35019,
+            "label": "PASSPORT",
+            "properties": {
+                "CNIC": "94841559691",
+                "Passport_Expiry_Date": "2027-06-14",
+                "Passport_Number": "KkDK7iWBAn1C",
+                "Place_of_Birth": "Jasontown"
+            }
+        },
+        {
+            "id": 20033,
+            "label": "TELCO",
+            "properties": {
+                "CDR_Number": "923076422",
+                "CNIC": "94841559691",
+                "activate_at": "2019-01-04 00:00:00"
+            }
+        },
+        {
+            "id": 20034,
+            "label": "TELCO",
+            "properties": {
+                "CDR_Number": "923873316",
+                "CNIC": "94841559691",
+                "activate_at": "2019-03-27 00:00:00"
+            }
+        }
+    ]
+}

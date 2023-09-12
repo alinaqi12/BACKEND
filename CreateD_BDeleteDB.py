@@ -34,8 +34,10 @@ def manage_database(request):
 
 def create_neo4j_database(database_name,driver):
     try:
-        with driver.session() as session:
+        with driver.session(database="system") as session:
+
             query = f"CREATE DATABASE {database_name}"
+
             session.run(query)
             return True
     except Exception as e:
@@ -44,7 +46,7 @@ def create_neo4j_database(database_name,driver):
 
 def delete_neo4j_database(database_name,driver):
     try:
-        with driver.session() as session:
+        with driver.session(database="system") as session:
             query = f"DROP DATABASE {database_name}"
             session.run(query)
             return True

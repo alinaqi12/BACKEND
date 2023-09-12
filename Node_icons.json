@@ -4,111 +4,43 @@
         "iconLabel": "ICON"
     },
     {
-        "Node": "SIM_Info",
-        "iconLabel": "Flight"
-    },
-    {
-        "Node": "test5",
-        "iconLabel": "Person"
-    },
-    {
-        "Node": "test7",
-        "iconLabel": "Person"
-    },
-    {
-        "Node": "test8",
-        "iconLabel": "Database"
-    },
-    {
-        "Node": "test9",
-        "iconLabel": "Database"
-    },
-    {
-        "Node": "test10",
-        "iconLabel": "Flight"
-    },
-    {
-        "Node": "test11",
-        "iconLabel": "Graph"
-    },
-    {
-        "Node": "test12",
-        "iconLabel": "Linux"
-    },
-    {
-        "Node": "Person",
-        "iconLabel": "PersonFilled"
-    },
-    {
-        "Node": "TAX_PAYER",
-        "iconLabel": "Bookmark"
-    },
-    {
-        "Node": "User_info",
-        "iconLabel": "Visuals"
-    },
-    {
-        "Node": "Transactions",
+        "Node": "qqq",
         "iconLabel": "Cloud"
     },
     {
-        "Node": "test13",
-        "iconLabel": "Graph"
+        "Node": "Polic3",
+        "iconLabel": "CallFilled"
     },
     {
-        "Node": "Again",
-        "iconLabel": "BookmarkFilled"
-    },
-    {
-        "Node": "CDR",
-        "iconLabel": ""
+        "Node": "police5",
+        "iconLabel": "Cloud"
     },
     {
         "Node": "CDR",
-        "iconLabel": ""
+        "iconLabel": "CallFilled"
     },
     {
-        "Node": "CDR",
+        "Node": "TELCO",
+        "iconLabel": "SimFilled"
+    },
+    {
+        "Node": "PASSPORT",
+        "iconLabel": "Passport  "
+    },
+    {
+        "Node": "NADRA",
         "iconLabel": "PersonFilled"
     },
     {
-        "Node": "Junaid",
+        "Node": "VISIT",
         "iconLabel": "Flight"
     },
     {
-        "Node": "blbala",
-        "iconLabel": "Linux"
+        "Node": "REPORT",
+        "iconLabel": "Report"
     },
     {
-        "Node": "blablalbal",
-        "iconLabel": "Flight"
-    },
-    {
-        "Node": "qwerr",
-        "iconLabel": "Database"
-    },
-    {
-        "Node": "adwdw",
-        "iconLabel": "Person"
-    },
-    {
-        "Node": "adwdw",
-        "iconLabel": "Person"
-    },
-    {
-        "Node": "adwdw",
-        "iconLabel": "Person"
-    },
-    {
-        "Node": "check123check",
-        "iconLabel": "Person"
-    },
-    {
-        "Node": "check123check",
-        "iconLabel": "Person"
-    },
-    {
-        "Node": "check123check",
-        "iconLabel": "Person"
+        "Node": "POLICE",
+        "iconLabel": "Building"
     }
 ]

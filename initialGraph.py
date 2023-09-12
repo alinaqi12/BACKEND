@@ -20,7 +20,7 @@ def ini_graph(data):
             properties = a['property']
             propertyvalue = str(a['propertyvalue'])
             if table=="" and properties==False and propertyvalue=="" and database!="":
-                query+= " OPTIONAL MATCH (n)-[r]-(c) RETURN c "+f"limit {limit} "
+                query+= f" OPTIONAL MATCH (n)-[r*0..{depth}]-(c) RETURN c "+f"limit {limit} "
                 # print("NO 1 is executing")
         
             elif table!="" and properties!=False and propertyvalue!="" and depth!="":

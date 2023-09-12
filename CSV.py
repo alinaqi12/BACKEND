@@ -5,7 +5,7 @@ from neo4j import GraphDatabase
 import csv
 from Old_rels import get_node_name
 # from Upload_image import image_upload
-# from Node_icons import addNode_icon
+from Node_icons import addNode_icon
 
 def import_json_to_neo4j(json_data, label, username, password, database, uri):
     driver = GraphDatabase.driver(uri, auth=(username, password))
@@ -66,19 +66,23 @@ def upload_csv(request):
 
     try:
         request_data = request.json
-        
+        print("wefwfwef")
+        #print(request_data)
         if "database" in request_data:
-            uri = request["URI"]
-            username = request["username"]
-            password = request["password"]
-            database = request["database"]
+            print(request_data)
+            uri = request_data["URI"]
+            username = request_data["username"]
+            password = request_data["password"]
+            database = request_data["database"]
+            iconLabel = request_data["icon"]
         else:
+            print("in else")
             uri = "bolt://localhost:7687"
             username = "alinaqi"
             password = "12345678"
             database = "testingdb"
 
-
+        print("hehcehce")
         label = request_data.get("label_name", "Node")  # Default label is 'Node'
         file_data = request_data.get("file_data", [])
 
@@ -88,8 +92,11 @@ def upload_csv(request):
         label = label_format(label)
 
         file_data_formated = data_formating(file_data)
+        addNode_icon(label,iconLabel)
         success = import_json_to_neo4j(file_data_formated, label,username,password,database,uri)
         
+        
+
         if success == 200:
             rett = get_node_name(uri,username,password,database,label)
             ret = "JSON data inserted successfully in Neo4j" + rett
