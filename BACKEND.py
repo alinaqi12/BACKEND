@@ -123,7 +123,8 @@ def filternodes():
         response = get_nodes_and_edges()  # Call the function
         return response
 
+#if __name__ == '__main__':
+#   app.run(host="192.168.18.95",debug=True, port=34464)
+
 if __name__ == '__main__':
-    app.run(host="192.168.18.95",debug=True, port=34464)
-
-
+    app.run(host="192.168.137.229",debug=True, port=34464)
