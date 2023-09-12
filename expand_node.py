@@ -1,65 +1,50 @@
-from flask import Flask
-from flask import jsonify
-from flask import request
+from flask import Flask, request, jsonify
 from neo4j import GraphDatabase
 
-app = Flask(__name__)
 
-# Define a function to query Neo4j and retrieve the first-depth nodes and relationships
-def get_first_depth_nodes_with_relationships(node_id, database, uri, username, password):
-    try:
-        driver = GraphDatabase.driver(uri, auth=(username, password))
-        query = (
-            "MATCH path = (startNode)-[rel *1]-(endNode) "
-            f"WHERE ID(startNode) = {node_id} "
-            "UNWIND nodes(path) as node "
-            "RETURN ID(node) as id, labels(node) as labels, relationships(path) as rel"
-        )
-        print(query)
+def get_neighboring_nodes(uri, username, password, node_id, database):
+    query = (
+        f"MATCH (startNode)-[relationship]-(neighbor) "
+        f"WHERE ID(startNode) = {node_id} "
+        "RETURN ID(startNode) as source, type(relationship) as type, ID(neighbor) as target, neighbor, labels(neighbor) as neighborLabels"
+    )
+    
+    with GraphDatabase.driver(uri, auth=(username, password)) as driver:
         with driver.session(database=database) as session:
             result = session.run(query)
-    
-        first_depth_data = []
-        for record in result:
-            node_data = record["node"]
-            rel_data = record["rel"]
-            
-            first_depth_data.append({
-                "id": node_data["id"],
-                "labels": node_data["labels"],
-                "relationship": dict(rel_data)
-            })
+            return [record.data() for record in result]
 
-        return first_depth_data
 
-    except Exception as e:
-        print("Error:", str(e))
-        return []
+def expandnode(request):
+    print("hereerererer-[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]")
+    data = request
+    print(data)
+    # Extract input data from JSON
+    username = data['username']
+    password = data['password']
+    uri = data['URI']
+    database = data["database"]
+    node_id = data['node_id']
 
-# Define a Flask route to get first-depth nodes with relationships
-@app.route('/expand', methods=['POST'])
-def api_get_first_depth_nodes_with_relationships():
-    try:
-        data = request.get_json()
-        database = data.get('database')
-        node_id = data.get("node_id")
-        uri = data.get('URI')
-        username = data.get("username")
-        password = data.get("password")
+    # Execute the Cypher query
+    results = get_neighboring_nodes(uri, username, password, node_id, database)
 
-        if not node_id:
-            return jsonify({"error": "Missing 'node_id' in the request body"}), 400
+    # Create the response structure with "edges" and "nodes"
+    response = {"edges": [], "nodes": [],"iconLabels":[]}
 
-        first_depth_data = get_first_depth_nodes_with_relationships(
-            node_id, database, uri, username, password
-        )
+    for result in results:
+        edge = {
+            "source": result["source"],
+            "target": result["target"],
+            "type": result["type"]
+        }
+        response["edges"].append(edge)
 
-        response_data = first_depth_data
-
-        return jsonify({"first_depth_data": response_data})
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-if __name__ == '__main__':
-    app.run(host="192.168.18.84", debug=True, port=34465)
+        node = {
+            "id": result["target"],
+            "label": result["neighborLabels"][0] if result["neighborLabels"] else "",
+            "properties": result["neighbor"]
+        }
+        response["nodes"].append(node)
+    print(response)
+    return jsonify(response)

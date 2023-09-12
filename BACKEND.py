@@ -18,6 +18,7 @@ from existing_node import get_existing_nodes_or_delete
 from TESTING2 import ini_graph
 from CreateD_BDeleteDB  import manage_database
 from Filters4 import get_nodes_and_edges
+from expand_node import expandnode
 
 
 app = Flask(__name__)
@@ -76,6 +77,14 @@ def getgraph():
         #response=ini_graph(request.get_json())
         
         return jsonify(response)
+
+@app.route('/expand', methods=['POST'])
+def expand():
+        if request.method=='POST':
+            response=expandnode(request.get_json())
+            
+            #response=ini_graph(request.get_json())
+        return response
 
 @app.route('/geta', methods=['POST'])
 def getgraph1():
