@@ -1,133 +1,38 @@
 {
-    "edges": [
-        {
-            "source": 30018,
-            "target": 69136,
-            "type": "HAS_CASE"
-        },
-        {
-            "source": 30018,
-            "target": 75478,
-            "type": "HAS_CASE"
-        },
-        {
-            "source": 30018,
-            "target": 57064,
-            "type": "HAS_CASE"
-        },
-        {
-            "source": 30018,
-            "target": 64541,
-            "type": "HAS_CASE"
-        },
-        {
-            "source": 30018,
-            "target": 58437,
-            "type": "HAS_CASE"
-        },
-        {
-            "source": 30018,
-            "target": 69256,
-            "type": "HAS_CASE"
-        },
-        {
-            "source": 30018,
-            "target": 35019,
-            "type": "HAS_PASSPORT"
-        },
-        {
-            "source": 30018,
-            "target": 20033,
-            "type": "HAS_NUMBER"
-        },
-        {
-            "source": 30018,
-            "target": 20034,
-            "type": "HAS_NUMBER"
-        }
-    ],
-    "nodes": [
-        {
-            "id": 69136,
-            "label": "REPORT",
-            "properties": {
-                "case_number": "RTnuc",
-                "status": "closed",
-                "suspect": "94841559691"
-            }
-        },
-        {
-            "id": 75478,
-            "label": "REPORT",
-            "properties": {
-                "case_number": "rnqVB",
-                "status": "closed",
-                "suspect": "94841559691"
-            }
-        },
-        {
-            "id": 57064,
-            "label": "REPORT",
-            "properties": {
-                "case_number": "aUk0S",
-                "status": "closed",
-                "suspect": "94841559691"
-            }
-        },
-        {
-            "id": 64541,
-            "label": "REPORT",
-            "properties": {
-                "case_number": "1DzAC",
-                "status": "closed",
-                "suspect": "94841559691"
-            }
-        },
-        {
-            "id": 58437,
-            "label": "REPORT",
-            "properties": {
-                "case_number": "bDIRv",
-                "status": "pending",
-                "suspect": "94841559691"
-            }
-        },
-        {
-            "id": 69256,
-            "label": "REPORT",
-            "properties": {
-                "case_number": "nBKE9",
-                "status": "pending",
-                "suspect": "94841559691"
-            }
-        },
-        {
-            "id": 35019,
-            "label": "PASSPORT",
-            "properties": {
-                "CNIC": "94841559691",
-                "Passport_Expiry_Date": "2027-06-14",
-                "Passport_Number": "KkDK7iWBAn1C",
-                "Place_of_Birth": "Jasontown"
-            }
-        },
-        {
-            "id": 20033,
-            "label": "TELCO",
-            "properties": {
-                "CDR_Number": "923076422",
-                "CNIC": "94841559691",
-                "activate_at": "2019-01-04 00:00:00"
-            }
-        },
-        {
-            "id": 20034,
-            "label": "TELCO",
-            "properties": {
-                "CDR_Number": "923873316",
-                "CNIC": "94841559691",
-                "activate_at": "2019-03-27 00:00:00"
-            }
-        }
-    ]
+  "edges": [
+    { "source": 79721, "target": 90262, "type": "REPORTING_STATION" },
+    { "source": 79721, "target": 35019, "type": "HAS_CASE" }
+  ],
+  "nodes": [
+    {
+      "id": 90262,
+      "label": "POLICE",
+      "properties": {
+        "case_detail": "Robbery at a convenience store",
+        "time_of_fir": "2019-03-30 15:43:35",
+        "no_of_suspects": "8",
+        "progress": "pending",
+        "case_number": "ay4U5",
+        "police_station_numbers": "13778122"
+      }
+    },
+    {
+      "id": 35019,
+      "label": "NADRA",
+      "properties": {
+        "First_Name": "Mikayla",
+        "Profession": "Social research officer, government",
+        "Date_of_Birth": "1953-12-31",
+        "Last_Name": "George",
+        "Father_Name": "William Hardy",
+        "Location_Coordinates_Y": "70.18686913847512",
+        "CNIC": "94841559691",
+        "Location_Coordinates_X": "24.125604855266506",
+        "City": "Lake Beth",
+        "Gender": "Male",
+        "Age": "43"
+      }
+    }
+  ],
+  "iconLabels": []
 }
