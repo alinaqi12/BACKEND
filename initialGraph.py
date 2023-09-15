@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify,Flask
 from neo4j import GraphDatabase
 import json
 
@@ -100,4 +100,3 @@ def remove_duplicate_dicts(data):
             unique_data.append(item)
 
     return unique_data
-
