@@ -1,8 +1,9 @@
 from neo4j import GraphDatabase
-from initialGraph import ini_graph
+from initGraph import ini_graph
 from limit import remove_extra_nodes
 from Node_icons import get_node_icon
-from TESTING2 import ini_graph
+#from TESTING2 import ini_graph
+from initGraph import ini_graph
 
 def get_nodes_and_edges(data):
     URI = data['URI']
@@ -31,12 +32,13 @@ def get_nodes_and_edges(data):
 def getdata(Request):
     #print(Request)
     try:
+        #Request = request.json()
         if 'node_id' in Request:
             nodes_and_edges=get_nodes_and_edges(Request)
         else:
             #nodes_and_edges = ini_graph(Request)
             #print("nodes&edges: ",nodes_and_edges)
-            #print("REQUEST : ",Request)
+            print("REQUEST : ",Request)
             nodes_and_edges = ini_graph(Request)
             #print("nodes&edges: ",nodes_and_edges)
             # nodes_and_edges['edges']=[]
