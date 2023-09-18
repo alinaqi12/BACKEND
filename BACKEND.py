@@ -20,6 +20,7 @@ from CreateD_BDeleteDB  import manage_database
 from Filters4 import get_nodes_and_edges
 #from expand_node import expandnode
 from expandnode1 import expandnode
+from Search import search
 
 
 app = Flask(__name__)
@@ -135,11 +136,17 @@ def filternodes():
     if request.method == 'POST':
         response = get_nodes_and_edges()  # Call the function
         return response
+    
+@app.route("/search", methods=["POST"])
+def Search():
+    if request.method == 'POST':
+        response = search()
+        return response
 
 #if __name__ == '__main__':
 #   app.run(host="192.168.18.95",debug=True, port=34464)
 
 if __name__ == '__main__':
-    app.run(host="192.168.137.229",debug=True, port=34464)
+    app.run(host="localhost",debug=True, port=34465)
 
 
